@@ -1,47 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome | TechDinesh</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Dineshkumar Chandrasekaran - Python Full Stack Developer</title>
+    <meta name="title" content="Dineshkumar Chandrasekaran - Python Full Stack Developer">
+    <meta name="description" content="Product-driven software engineer skilled in building scalable, high availability and secure web applications using Python, Django, Flask, and modern technologies.">
+    <meta name="keywords" content="Python Developer, Full Stack Developer, Django, Flask, FastAPI, Web Development, Software Engineer">
+    <meta name="author" content="Dineshkumar Chandrasekaran">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dineshkumar.dev/">
+    <meta property="og:title" content="Dineshkumar Chandrasekaran - Python Full Stack Developer">
+    <meta property="og:description" content="Product-driven software engineer skilled in building scalable web applications using Python, Django, Flask, and modern technologies.">
+    <meta property="og:image" content="https://dineshkumar.dev/preview.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dineshkumar.dev/">
+    <meta property="twitter:title" content="Dineshkumar Chandrasekaran - Python Full Stack Developer">
+    <meta property="twitter:description" content="Product-driven software engineer skilled in building scalable web applications using Python, Django, Flask, and modern technologies.">
+    <meta property="twitter:image" content="https://dineshkumar.dev/preview.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-900 text-white">
-  <!-- Navbar -->
-  <nav class="flex justify-between items-center p-6">
-    <h1 class="text-2xl font-bold">TechDinesh</h1>
-    <div class="space-x-6">
-      <a href="#" class="hover:text-blue-400">Home</a>
-      <a href="#projects" class="hover:text-blue-400">Projects</a>
-      <a href="#contact" class="hover:text-blue-400">Contact</a>
-    </div>
-  </nav>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#home" class="logo">Dineshkumar Chandrasekaran</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Hero -->
-  <section class="text-center mt-20">
-    <h2 class="text-4xl font-bold mb-4">Welcome to TechDinesh</h2>
-    <p class="text-lg mb-6">Python Developer | Entrepreneur | SaaS Builder</p>
-    <a href="#projects" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">View My Work</a>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badges">
+                    <a href="https://www.credly.com/badges" target="_blank" class="badge" aria-label="AWS Certification">AWS Certified</a>
+                    <a href="https://www.linkedin.com/in/dineshkumarchandrasekaran" target="_blank" class="badge" aria-label="Python Expert">Python Expert</a>
+                    <span class="status-badge">🟢 Available for hire</span>
+                </div>
+                <h1 class="hero-title">PYTHON DEVELOPER / FULL STACK</h1>
+                <p class="hero-subtitle">Product-driven software engineer.</p>
+                <div class="hero-description">
+                    <p>Hey 👋, I'm Dineshkumar.</p>
+                    <p>I'm a Python Full Stack Developer skilled in building scalable web applications using Django, Flask, and FastAPI. With expertise in database management, cloud technologies (AWS), and modern frontend frameworks, I create robust solutions that solve real-world business problems.</p>
+                </div>
+                <div class="hero-actions">
+                    <a href="#work" class="cta-link">View my work →</a>
+                    <a href="assets/DINESHKUMAR CV.pdf" download class="download-resume" aria-label="Download Resume">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Projects -->
-  <section id="projects" class="mt-20 px-8">
-    <h3 class="text-2xl font-bold mb-6">Projects</h3>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h4 class="text-xl font-semibold">🚀 SparkUp</h4>
-        <p class="text-gray-300">An influencer marketing platform built with Django + React.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h4 class="text-xl font-semibold">💡 SoloStack</h4>
-        <p class="text-gray-300">AI-powered SaaS for solo entrepreneurs & freelancers.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Work Section -->
+    <section class="work" id="work">
+        <div class="container">
+            <h2 class="section-heading">Recent Projects</h2>
+            <p class="section-subheading">Cool things I've built, innovative solutions, and exciting achievements.</p>
+            
+            <div class="work-list">
+                <article class="work-item">
+                    <div class="work-date">2024</div>
+                    <div class="work-content">
+                        <h3 class="work-title">ClientEase CRM</h3>
+                        <p class="work-description">Enterprise-level Customer Relationship Management system built with Django. Implemented comprehensive features including user authentication & authorization, customer data management, sales pipeline tracking, lead management, and automated report generation for business insights.</p>
+                        <div class="work-tags">
+                            <span class="work-tag">Django</span>
+                            <span class="work-tag">Python</span>
+                            <span class="work-tag">MySQL</span>
+                            <span class="work-tag">Bootstrap</span>
+                        </div>
+                        <a href="https://github.com/dineshjadeja08/django-crm" target="_blank" class="work-link">View on GitHub →</a>
+                    </div>
+                </article>
 
-  <!-- Footer -->
-  <footer id="contact" class="mt-20 text-center py-6 bg-gray-800">
-    <p>© 2025 TechDinesh | <a href="mailto:hello@techdinesh.me" class="text-blue-400">hello@techdinesh.me</a></p>
-  </footer>
+                <article class="work-item">
+                    <div class="work-date">2024</div>
+                    <div class="work-content">
+                        <h3 class="work-title">Spark-hub</h3>
+                        <p class="work-description">Digital marketing platform connecting influencers with brands. Built with Django and PostgreSQL, featuring influencer profile management, campaign creation and tracking, performance analytics dashboard, and real-time collaboration tools for marketing teams.</p>
+                        <div class="work-tags">
+                            <span class="work-tag">Python</span>
+                            <span class="work-tag">Django</span>
+                            <span class="work-tag">PostgreSQL</span>
+                            <span class="work-tag">JavaScript</span>
+                        </div>
+                        <a href="https://github.com/dineshjadeja08/sparkhub" target="_blank" class="work-link">View on GitHub →</a>
+                    </div>
+                </article>
+
+                <article class="work-item">
+                    <div class="work-date">2023</div>
+                    <div class="work-content">
+                        <h3 class="work-title">SpamGuard API</h3>
+                        <p class="work-description">Intelligent spam detection API built with Django and Machine Learning. Utilizes natural language processing and trained ML models to detect spam in messages, emails, and comments with high accuracy. RESTful API design for easy integration into any application.</p>
+                        <div class="work-tags">
+                            <span class="work-tag">Django</span>
+                            <span class="work-tag">Machine Learning</span>
+                            <span class="work-tag">NLP</span>
+                            <span class="work-tag">REST API</span>
+                        </div>
+                        <a href="https://github.com/dineshjadeja08/spam-api-detector" target="_blank" class="work-link">View on GitHub →</a>
+                    </div>
+                </article>
+
+                <article class="work-item">
+                    <div class="work-date">2023</div>
+                    <div class="work-content">
+                        <h3 class="work-title">Aiva - Smart Assistant</h3>
+                        <p class="work-description">AI-powered desktop assistant built with Python featuring voice recognition and command processing. Capabilities include voice-activated commands, automated reminder management, real-time weather updates, and task automation to enhance productivity.</p>
+                        <div class="work-tags">
+                            <span class="work-tag">Python</span>
+                            <span class="work-tag">AI</span>
+                            <span class="work-tag">Voice Recognition</span>
+                            <span class="work-tag">GUI</span>
+                        </div>
+                        <a href="https://github.com/dineshjadeja08/gui-ai-assistant" target="_blank" class="work-link">View on GitHub →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-heading">Skills & Technologies</h2>
+            <p class="section-subheading">Technologies I work with to build robust applications.</p>
+            
+            <div class="skills-list">
+                <div class="skill-group">
+                    <h3 class="skill-category-title">Backend Development</h3>
+                    <p class="skill-items">Python • Django • Flask • FastAPI • MySQL • PostgreSQL • SQL • AWS • REST APIs</p>
+                </div>
+                
+                <div class="skill-group">
+                    <h3 class="skill-category-title">Frontend Development</h3>
+                    <p class="skill-items">HTML5 • CSS3 • JavaScript • Bootstrap • Tailwind CSS • Responsive Design</p>
+                </div>
+                
+                <div class="skill-group">
+                    <h3 class="skill-category-title">Tools & DevOps</h3>
+                    <p class="skill-items">Git • GitHub • Docker • AWS • CI/CD • Linux</p>
+                </div>
+                
+                <div class="skill-group">
+                    <h3 class="skill-category-title">Design & Others</h3>
+                    <p class="skill-items">Figma • Canva • Agile • Machine Learning • API Design</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications" id="certifications">
+        <div class="container">
+            <h2 class="section-heading">Certifications</h2>
+            <p class="section-subheading">Professional certifications and continuous learning achievements.</p>
+            
+            <div class="cert-list">
+                <div class="cert-item">
+                    <span class="cert-icon">🎓</span>
+                    <div class="cert-details">
+                        <strong>Building a Personal Portfolio with Django</strong> - LinkedIn Learning
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-icon">📊</span>
+                    <div class="cert-details">
+                        <strong>MySQL Essential Training</strong> - LinkedIn Learning
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-icon">🔗</span>
+                    <div class="cert-details">
+                        <strong>Blockchain</strong> - SmartInternz
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-icon">🌐</span>
+                    <div class="cert-details">
+                        <strong>CCNA: Introduction to Networks</strong> - Cisco Networking Academy
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-icon">⚙️</span>
+                    <div class="cert-details">
+                        <strong>Angular JS</strong> - Infosys Springboard
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-icon">📈</span>
+                    <div class="cert-details">
+                        <strong>MongoDB Essentials</strong> - Infosys Springboard
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-icon">🚀</span>
+                    <div class="cert-details">
+                        <strong>Node JS</strong> - Infosys Springboard
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-heading">Ready to start?</h2>
+            <p class="contact-text">I am currently available for new projects and opportunities. Let's keep in touch to explore more!</p>
+            
+            <div class="contact-buttons">
+                <a href="mailto:dineshbtech26@gmail.com" class="contact-btn">Contact me</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/dineshkumarchandrasekaran" target="_blank" class="social-link">LinkedIn</a>
+                <a href="https://github.com/dineshjadeja08" target="_blank" class="social-link">Github</a>
+                <a href="mailto:dineshbtech26@gmail.com" class="social-link">Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Dineshkumar Chandrasekaran. Python Full Stack Developer made with ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <!-- Theme Toggle -->
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </body>
 </html>
