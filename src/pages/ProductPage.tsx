@@ -82,7 +82,8 @@ export function ProductPage() {
           {/* Product Info */}
           <div className="product-info" style={{ position: 'sticky', top: '120px', height: 'fit-content' }}>
             <span className="eyebrow">{product.fit} / {product.gsm}</span>
-            <h1 style={{ fontSize: '48px', marginBottom: '16px' }}>{product.name}</h1>
+            <h1 style={{ fontSize: '48px', marginBottom: '8px' }}>{product.name}</h1>
+            <p style={{ fontSize: '14px', color: 'var(--secondary)', marginBottom: '16px' }}>Premium oversized menswear essential by CAVVE.</p>
             <p className="price" style={{ fontSize: '24px', fontWeight: 600, marginBottom: '40px' }}>
               {formatInr(product.price)}
               {product.compareAt && (
@@ -92,26 +93,11 @@ export function ProductPage() {
               )}
             </p>
 
-            <div className="description" style={{ marginBottom: '60px', color: 'var(--secondary)', lineHeight: 1.8 }}>
-              <p>{product.copy}</p>
-              <ul style={{ marginTop: '24px', display: 'grid', gap: '8px' }}>
-                {product.details.map((detail, idx) => (
-                  <li key={idx} style={{ fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <div style={{ width: '4px', height: '4px', background: 'var(--primary)', borderRadius: '50%' }} />
-                    {detail}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="size-selection" style={{ marginBottom: '60px' }}>
+            <div className="size-selection" style={{ marginBottom: '32px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
                 <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Select Size</span>
-                <button className="text-link" style={{ fontSize: '11px', border: 'none' }}>
-                  <Ruler size={14} /> Size Guide
-                </button>
               </div>
-              <div className="size-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px' }}>
+              <div className="size-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px', marginBottom: '16px' }}>
                 {product.sizes.map(size => (
                   <button 
                     key={size}
@@ -132,9 +118,10 @@ export function ProductPage() {
                   </button>
                 ))}
               </div>
+              <p style={{ fontSize: '12px', color: 'var(--secondary)', fontStyle: 'italic' }}>Model is 6'0 wearing size L</p>
             </div>
 
-            <div className="actions" style={{ display: 'flex', gap: '16px', marginBottom: '60px' }}>
+            <div className="actions" style={{ display: 'flex', gap: '16px', marginBottom: '40px' }}>
               <button 
                 className="primary-button" 
                 style={{ flex: 1 }}
@@ -151,12 +138,30 @@ export function ProductPage() {
               </button>
             </div>
 
+            <div className="description" style={{ marginBottom: '40px', color: 'var(--secondary)', lineHeight: 1.8 }}>
+              <p>{product.copy}</p>
+              <ul style={{ marginTop: '24px', display: 'grid', gap: '8px' }}>
+                {product.details.map((detail, idx) => (
+                  <li key={idx} style={{ fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div style={{ width: '4px', height: '4px', background: 'var(--primary)', borderRadius: '50%' }} />
+                    {detail}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div style={{ marginBottom: '40px' }}>
+              <button className="text-link" style={{ fontSize: '11px', border: 'none', padding: 0 }}>
+                <Ruler size={14} /> Size Guide
+              </button>
+            </div>
+
             <div className="product-features" style={{ display: 'grid', gap: '24px', paddingTop: '40px', borderTop: '1px solid var(--border)' }}>
               <div style={{ display: 'flex', gap: '16px' }}>
                 <Truck size={20} strokeWidth={1.5} />
                 <div>
                   <p style={{ fontSize: '13px', fontWeight: 700 }}>Free Shipping</p>
-                  <p style={{ fontSize: '12px', color: 'var(--secondary)' }}>On all orders within India.</p>
+                  <p style={{ fontSize: '12px', color: 'var(--secondary)' }}>Free shipping across India on prepaid orders.</p>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: '16px' }}>

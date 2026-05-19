@@ -60,7 +60,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="footer-bottom" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '40px', borderTop: '1px solid var(--border)' }}>
+        <div className="footer-bottom footer-bottom-flex">
           <div className="legal-links" style={{ display: 'flex', gap: '32px', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--secondary)' }}>
             <span>© 2024 CAVVE India</span>
             <Link to="/privacy">Privacy</Link>

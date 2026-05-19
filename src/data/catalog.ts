@@ -17,6 +17,87 @@ export type Product = {
 
 export const products: Product[] = [
   {
+    id: 'drop001-black',
+    slug: 'drop001-essential-oversized-tee-black',
+    name: 'DROP001 Essential Oversized Tee - Black',
+    color: 'Black',
+    colorHex: '#0D0D0D',
+    price: 1199,
+    compareAt: 1799,
+    fit: 'Oversized',
+    gsm: '240 GSM',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    stock: 50,
+    gallery: [
+      '/images/drop001-black-front.png',
+      '/images/drop001-black-back.png'
+    ],
+    copy: 'The DROP001 Essential Oversized Tee is crafted for everyday wear with a modern oversized silhouette and premium heavyweight cotton feel.\n\nDesigned with a relaxed fit, dropped shoulders, and minimal CAVVE branding, this tee delivers effortless styling with elevated comfort.\n\nBuilt for versatility, the DROP001 pairs seamlessly with cargos, denim, trousers, and layered streetwear looks.\n\nMinimal by design.\nEssential by nature.\n\nMade for everyday confidence.',
+    details: [
+      'Premium heavyweight cotton feel',
+      'Relaxed oversized fit',
+      'Soft breathable fabric',
+      'Drop shoulder silhouette',
+      'Minimal chest branding',
+      'Everyday comfort',
+      'Unisex-inspired modern fit'
+    ],
+  },
+  {
+    id: 'drop001-beige',
+    slug: 'drop001-essential-oversized-tee-beige',
+    name: 'DROP001 Essential Oversized Tee - Beige',
+    color: 'Beige',
+    colorHex: '#D8CBB8',
+    price: 1199,
+    compareAt: 1799,
+    fit: 'Oversized',
+    gsm: '240 GSM',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    stock: 50,
+    gallery: [
+      '/images/drop001-beige-front.png',
+      '/images/drop001-beige-back.png'
+    ],
+    copy: 'The DROP001 Essential Oversized Tee is crafted for everyday wear with a modern oversized silhouette and premium heavyweight cotton feel.\n\nDesigned with a relaxed fit, dropped shoulders, and minimal CAVVE branding, this tee delivers effortless styling with elevated comfort.\n\nBuilt for versatility, the DROP001 pairs seamlessly with cargos, denim, trousers, and layered streetwear looks.\n\nMinimal by design.\nEssential by nature.\n\nMade for everyday confidence.',
+    details: [
+      'Premium heavyweight cotton feel',
+      'Relaxed oversized fit',
+      'Soft breathable fabric',
+      'Drop shoulder silhouette',
+      'Minimal chest branding',
+      'Everyday comfort',
+      'Unisex-inspired modern fit'
+    ],
+  },
+  {
+    id: 'drop001-white',
+    slug: 'drop001-essential-oversized-tee-white',
+    name: 'DROP001 Essential Oversized Tee - White',
+    color: 'White',
+    colorHex: '#F5F5F2',
+    price: 1199,
+    compareAt: 1799,
+    fit: 'Oversized',
+    gsm: '240 GSM',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    stock: 50,
+    gallery: [
+      '/images/drop001-white-front.png',
+      '/images/drop001-white-back.png'
+    ],
+    copy: 'The DROP001 Essential Oversized Tee is crafted for everyday wear with a modern oversized silhouette and premium heavyweight cotton feel.\n\nDesigned with a relaxed fit, dropped shoulders, and minimal CAVVE branding, this tee delivers effortless styling with elevated comfort.\n\nBuilt for versatility, the DROP001 pairs seamlessly with cargos, denim, trousers, and layered streetwear looks.\n\nMinimal by design.\nEssential by nature.\n\nMade for everyday confidence.',
+    details: [
+      'Premium heavyweight cotton feel',
+      'Relaxed oversized fit',
+      'Soft breathable fabric',
+      'Drop shoulder silhouette',
+      'Minimal chest branding',
+      'Everyday comfort',
+      'Unisex-inspired modern fit'
+    ],
+  },
+  {
     id: 'tee-jet-black',
     slug: 'jet-black-oversized-tee',
     name: 'Jet Black Oversized Tee',

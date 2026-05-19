@@ -128,6 +128,20 @@ export function CheckoutPage() {
     })
   }
 
+  if (!session) {
+    return (
+      <div className="section-padding page-header-offset" style={{ textAlign: 'center', padding: '160px 5%' }}>
+        <SEO title="Checkout | CAVVE" description="Please sign in to continue." />
+        <Lock size={48} style={{ opacity: 0.1, marginBottom: '24px' }} />
+        <h1 style={{ fontSize: 'clamp(32px, 6vw, 48px)', marginBottom: '24px' }}>Authentication Required.</h1>
+        <p style={{ color: 'var(--secondary)', marginBottom: '40px', maxWidth: '400px', margin: '0 auto 40px' }}>
+          Please sign in or create an account to proceed with your protocol allocation.
+        </p>
+        <button className="primary-button" onClick={() => navigate('/account')}>Sign In to Continue</button>
+      </div>
+    )
+  }
+
   return (
     <div className="section-padding page-header-offset checkout-page">
       <SEO title="Checkout | CAVVE" description="Securely complete your purchase." />

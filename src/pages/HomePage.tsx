@@ -1,12 +1,24 @@
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Play, ShoppingBag } from 'lucide-react'
 import { SEO } from '../components/SEO'
 import { ProductCard } from '../components/ProductCard'
-import { products } from '../data/catalog'
+import type { Product } from '../data/catalog'
+import { fetchDbProducts } from '../lib/products'
 
 export function HomePage() {
-  const featuredProducts = products.slice(0, 3)
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function loadFeatured() {
+      const prods = await fetchDbProducts()
+      setFeaturedProducts(prods.slice(0, 3))
+      setLoading(false)
+    }
+    loadFeatured()
+  }, [])
 
   return (
     <div className="home-page">
@@ -29,7 +41,7 @@ export function HomePage() {
             <p style={{ maxWidth: '400px', fontSize: '16px', color: 'var(--secondary)', marginBottom: '40px', lineHeight: 1.6 }}>
               A uniform for the focused. Heavyweight silhouettes engineered with clinical precision.
             </p>
-            <div style={{ display: 'flex', gap: '20px' }}>
+            <div className="hero-buttons">
               <Link to="/collections" className="primary-button">
                 Shop Collection <ArrowRight size={16} />
               </Link>
@@ -56,7 +68,7 @@ export function HomePage() {
 
       {/* Philosophy Section */}
       <section className="section-padding" style={{ background: 'var(--primary)', color: 'white' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+        <div className="container philosophy-grid">
           <div>
             <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.4)' }}>The Manifesto</span>
             <h2 style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 1.1, marginBottom: '40px' }}>
@@ -76,31 +88,35 @@ export function HomePage() {
 
       {/* Featured Products - Editorial Grid */}
       <section className="section-padding">
-        <header style={{ marginBottom: '80px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+        <header className="header-flex" style={{ marginBottom: '80px' }}>
           <div>
             <span className="eyebrow">The Catalog</span>
-            <h2 style={{ fontSize: '48px' }}>Core Repetitions</h2>
+            <h2 style={{ fontSize: 'clamp(32px, 6vw, 48px)' }}>Core Repetitions</h2>
           </div>
           <Link to="/collections" className="text-link">View All <ArrowRight size={14} /></Link>
         </header>
 
-        <div className="product-grid">
-          {featuredProducts.map((product, i) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <ProductCard product={product} />
-            </motion.div>
-          ))}
-        </div>
+        {loading ? (
+          <div style={{ textAlign: 'center', padding: '100px 0' }}>Syncing protocol catalog...</div>
+        ) : (
+          <div className="product-grid">
+            {featuredProducts.map((product, i) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <ProductCard product={product} />
+              </motion.div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Full Width Callout */}
-      <section style={{ height: '80vh', position: 'relative', overflow: 'hidden' }}>
+      <section className="drop-callout" style={{ position: 'relative', overflow: 'hidden' }}>
         <img 
           src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=2000&q=90" 
           alt="Men's Minimalist Fashion"

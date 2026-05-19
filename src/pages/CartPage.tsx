@@ -18,7 +18,7 @@ export function CartPage() {
       <div className="section-padding page-header-offset" style={{ textAlign: 'center', padding: '160px 5%' }}>
         <SEO title="Shopping Bag | CAVVE" description="Your bag is currently empty." />
         <ShoppingBag size={48} style={{ opacity: 0.1, marginBottom: '24px' }} />
-        <h1 style={{ fontSize: '48px', marginBottom: '24px' }}>Bag Empty.</h1>
+        <h1 style={{ fontSize: 'clamp(32px, 6vw, 48px)', marginBottom: '24px' }}>Bag Empty.</h1>
         <p style={{ color: 'var(--secondary)', marginBottom: '40px', maxWidth: '400px', margin: '0 auto 40px' }}>
           Your protocol is currently unassigned. Return to the collection to build your uniform.
         </p>
@@ -47,14 +47,7 @@ export function CartPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  style={{ 
-                    display: 'grid', 
-                    gridTemplateColumns: '120px 1fr auto', 
-                    gap: '40px', 
-                    paddingBottom: '32px', 
-                    borderBottom: '1px solid var(--border)',
-                    alignItems: 'center'
-                  }}
+                  className="cart-item-row"
                 >
                   <Link to={`/products/${item.product.slug}`} style={{ background: 'var(--surface)', aspectRatio: '3/4', overflow: 'hidden' }}>
                     <img src={item.product.gallery[0]} alt={item.product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />

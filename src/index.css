@@ -462,6 +462,53 @@ input, textarea {
   background: var(--secondary);
 }
 
+/* Shared Layout Utilities */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 120px;
+  align-items: center;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.cart-item-row {
+  display: grid; 
+  grid-template-columns: 120px 1fr auto;
+  gap: 40px;
+  padding-bottom: 32px; 
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.footer-bottom-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+.drop-callout {
+  height: 80vh;
+}
+
 /* Layout Specifics */
 .cart-layout, .checkout-layout, .account-layout {
   display: grid;
@@ -547,6 +594,63 @@ input, textarea {
 @media (max-width: 768px) {
   .reviews-grid { grid-template-columns: 1fr; }
 
+  .philosophy-grid, .split-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+    text-align: center;
+  }
+  
+  .philosophy-grid > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-buttons > * {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cart-item-row {
+    grid-template-columns: 80px 1fr !important;
+    gap: 20px !important;
+  }
+  
+  .cart-item-row > div:last-child {
+    grid-column: 1 / -1;
+    text-align: left !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .header-flex {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px;
+  }
+
+  .footer-bottom-flex {
+    flex-direction: column !important;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .legal-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .drop-callout {
+    height: 60vh !important;
+  }
+
   .mobile-bottom-nav {
     display: flex;
     justify-content: space-between;
@@ -567,7 +671,7 @@ input, textarea {
   }
 
   .hero-title {
-    font-size: 60px !important;
+    font-size: clamp(40px, 12vw, 60px) !important;
   }
 
   .hero-image-container {

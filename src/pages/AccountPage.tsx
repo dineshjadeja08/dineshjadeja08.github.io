@@ -40,10 +40,10 @@ export function AccountPage() {
     return (
       <div className="account-page page-header-offset section-padding">
         <SEO title="Sign In | CAVVE" description="Access your personal protocol and order history." />
-        <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '120px', alignItems: 'center' }}>
+        <div className="split-grid" style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <div>
             <span className="eyebrow">The System</span>
-            <h1 style={{ fontSize: '64px', lineHeight: 1, marginBottom: '32px' }}>Personal <span className="serif" style={{ fontStyle: 'italic' }}>Protocol</span></h1>
+            <h1 style={{ fontSize: 'clamp(40px, 8vw, 64px)', lineHeight: 1, marginBottom: '32px' }}>Personal <span className="serif" style={{ fontStyle: 'italic' }}>Protocol</span></h1>
             <p style={{ color: 'var(--secondary)', fontSize: '16px', lineHeight: 1.8 }}>
               Access your order history, track active shipments, and manage your preferred delivery addresses. 
               Join the uniform system.
@@ -103,7 +103,7 @@ export function AccountPage() {
         <main className="account-main">
           {activeTab === 'orders' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '60px' }}>
+              <div className="header-flex" style={{ marginBottom: '60px' }}>
                 <h2 style={{ fontSize: '40px' }}>Recent Repetitions</h2>
                 <span className="eyebrow" style={{ marginBottom: 0 }}>Showing {orders.length} protocol assignments</span>
               </div>
