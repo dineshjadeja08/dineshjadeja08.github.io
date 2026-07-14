@@ -38,7 +38,7 @@ export function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClose: () =
               {cart.length === 0 ? (
                 <div className="empty-drawer">
                   <p>Your bag is empty.</p>
-                  <Link to="/collections" className="primary-button" onClick={onClose}>Shop the collection</Link>
+                  <Link to="/shop" className="primary-button" onClick={onClose}>Open the pantry</Link>
                 </div>
               ) : (
                 <div className="drawer-items">

@@ -24,12 +24,12 @@ export function SearchPage() {
 
   return (
     <motion.div {...pageTransition} className="section-padding page-header-offset">
-      <SEO title="Search" description="Search for your favorite CAVVE pieces." />
+      <SEO title="Search" description="Search for your favourite Atchi pickle jars." />
       
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <header style={{ textAlign: 'center', marginBottom: '80px' }}>
           <span className="eyebrow">Catalog Search</span>
-          <h1 style={{ marginTop: '20px' }}>Find your uniform.</h1>
+          <h1 style={{ marginTop: '20px' }}>Find your flavour.</h1>
         </header>
 
         <div className="search-box-large">

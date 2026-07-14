@@ -20,6 +20,24 @@ const checkoutSchema = z.object({
 
 type CheckoutValues = z.infer<typeof checkoutSchema>
 
+type ErrorBody = {
+  error?: string
+}
+
+type PaymentOrderResponse = {
+  keyId: string
+  amount: number
+  currency: string
+  orderId: string
+  appOrderId: string
+}
+
+type RazorpayResponse = {
+  razorpay_order_id: string
+  razorpay_payment_id: string
+  razorpay_signature: string
+}
+
 export function CheckoutPage() {
   const { cart, clearCart } = useCommerceStore()
   const navigate = useNavigate()
@@ -61,22 +79,22 @@ export function CheckoutPage() {
       })
 
       if (!response.ok) {
-        const body = await response.json().catch(() => null)
+        const body = await response.json().catch(() => null) as ErrorBody | null
         throw new Error(body?.error ?? 'Could not create payment order.')
       }
 
-      const order = await response.json()
+      const order = await response.json() as PaymentOrderResponse
       const ready = await loadRazorpay()
       
-      if (!ready || !(window as any).Razorpay) {
+      if (!ready || !window.Razorpay) {
         throw new Error('Razorpay checkout could not be loaded.')
       }
 
-      const razorpay = new (window as any).Razorpay({
+      const razorpay = new window.Razorpay({
         key: order.keyId,
         amount: order.amount,
         currency: order.currency,
-        name: 'CAVVE',
+        name: 'Atchi Pickles',
         description: 'WEAR DISCIPLINE',
         order_id: order.orderId,
         prefill: {
@@ -85,7 +103,7 @@ export function CheckoutPage() {
           contact: values.phone,
         },
         theme: { color: '#0D0D0D' },
-        handler: async (response: any) => {
+        handler: async (response: RazorpayResponse) => {
           const verification = await fetch(`${import.meta.env.VITE_BACKEND_API_URL ?? 'http://localhost:8787'}/api/payments/verify`, {
             method: 'POST',
             headers: {
@@ -96,7 +114,7 @@ export function CheckoutPage() {
           })
 
           if (!verification.ok) {
-            const body = await verification.json().catch(() => null)
+            const body = await verification.json().catch(() => null) as ErrorBody | null
             setCheckoutError(body?.error ?? 'Payment verification failed.')
             setIsPaying(false)
             return
@@ -111,14 +129,14 @@ export function CheckoutPage() {
       })
 
       razorpay.open()
-    } catch (err: any) {
-      setCheckoutError(err.message)
+    } catch (err: unknown) {
+      setCheckoutError(err instanceof Error ? err.message : 'Checkout failed.')
       setIsPaying(false)
     }
   }
 
   function loadRazorpay() {
-    if ((window as any).Razorpay) return Promise.resolve(true)
+    if (window.Razorpay) return Promise.resolve(true)
     return new Promise<boolean>((resolve) => {
       const script = document.createElement('script')
       script.src = 'https://checkout.razorpay.com/v1/checkout.js'
@@ -131,11 +149,11 @@ export function CheckoutPage() {
   if (!session) {
     return (
       <div className="section-padding page-header-offset" style={{ textAlign: 'center', padding: '160px 5%' }}>
-        <SEO title="Checkout | CAVVE" description="Please sign in to continue." />
+        <SEO title="Checkout | Atchi" description="Please sign in to continue." />
         <Lock size={48} style={{ opacity: 0.1, marginBottom: '24px' }} />
         <h1 style={{ fontSize: 'clamp(32px, 6vw, 48px)', marginBottom: '24px' }}>Authentication Required.</h1>
         <p style={{ color: 'var(--secondary)', marginBottom: '40px', maxWidth: '400px', margin: '0 auto 40px' }}>
-          Please sign in or create an account to proceed with your protocol allocation.
+          Please sign in or create an account to continue with your order.
         </p>
         <button className="primary-button" onClick={() => navigate('/account')}>Sign In to Continue</button>
       </div>
@@ -144,7 +162,7 @@ export function CheckoutPage() {
 
   return (
     <div className="section-padding page-header-offset checkout-page">
-      <SEO title="Checkout | CAVVE" description="Securely complete your purchase." />
+      <SEO title="Checkout | Atchi" description="Securely complete your purchase." />
       
       <header style={{ marginBottom: '80px', textAlign: 'center' }}>
         <span className="eyebrow">Final Protocol</span>

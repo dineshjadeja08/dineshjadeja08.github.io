@@ -10,13 +10,13 @@ interface SEOProps {
 
 export function SEO({ 
   title, 
-  description = "CAVVE | WEAR DISCIPLINE. Premium minimalist menswear. Quiet luxury. Built for ambition.", 
-  image = "https://cavve.com/og-image.jpg", 
-  url = "https://cavve.com",
+  description = "Atchi Pickles. Authentic homemade Indian pickles made with traditional family recipes.", 
+  image = "/images/atchi/hero-kitchen.png", 
+  url = "https://atchi.in",
   type = "website"
 }: SEOProps) {
   useEffect(() => {
-    document.title = `${title} | CAVVE`
+    document.title = title.includes('Atchi') ? title : `${title} | Atchi Pickles`
     
     const metaDescription = document.querySelector('meta[name="description"]')
     if (metaDescription) {

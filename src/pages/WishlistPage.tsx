@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, type Transition } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Heart } from 'lucide-react'
 import { ProductCard } from '../components/ProductCard'
@@ -10,7 +10,7 @@ const pageTransition = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   exit: { opacity: 0, y: -20 },
-  transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] as any }
+  transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] } satisfies Transition
 }
 
 export function WishlistPage() {
@@ -19,7 +19,7 @@ export function WishlistPage() {
 
   return (
     <motion.div {...pageTransition} className="section-padding page-header-offset">
-      <SEO title="Saved Pieces" description="Your curated selection of CAVVE pieces." />
+      <SEO title="Saved Jars" description="Your saved Atchi pickle jars." />
       
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '80px', flexWrap: 'wrap', gap: '40px' }}>
         <div>
@@ -43,8 +43,8 @@ export function WishlistPage() {
             <Heart size={24} color="var(--secondary)" />
           </div>
           <p className="eyebrow" style={{ color: 'var(--secondary)' }}>Your wishlist is empty.</p>
-          <h2 style={{ margin: '24px 0' }}>Save pieces for later.</h2>
-          <Link className="primary-button" to="/collections" style={{ margin: '0 auto' }}>Explore collection</Link>
+          <h2 style={{ margin: '24px 0' }}>Save jars for later.</h2>
+          <Link className="primary-button" to="/shop" style={{ margin: '0 auto' }}>Open the pantry</Link>
         </div>
       )}
     </motion.div>

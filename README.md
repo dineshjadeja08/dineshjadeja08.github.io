@@ -1,98 +1,75 @@
-# CAVVE Commerce
+# GRF Growths
 
-Original premium React + Vite commerce platform for CAVVE with luxury editorial UI, Supabase-powered auth/data, and secure India-first payment and shipping integrations.
+Premium React + Vite site for GRF Growths, with a cinematic public rooster catalogue and a protected Supabase admin CMS for breeds, birds, gallery content, enquiries, testimonials, FAQs and settings.
 
 ## Stack
 
-- React, Vite, TypeScript, Tailwind CSS
-- React Router, Zustand, Framer Motion, GSAP
-- React Hook Form and Zod
-- Supabase Auth, PostgreSQL, Storage-ready schema
-- Express API scaffold for Razorpay and Shiprocket
+- React, Vite and TypeScript
+- React Router, TanStack Query, React Hook Form and Zod
+- Framer Motion, GSAP ScrollTrigger and Lenis
+- Supabase Auth, Postgres RLS and Storage
+- Netlify-ready SPA deployment
 
 ## Local Setup
 
 ```bash
 npm install
 cp .env.example .env
-npm run dev:all
+npm run dev
 ```
 
-Frontend: `http://localhost:5174`  
-Backend health: `http://localhost:8787/api/health`
+Frontend: `http://localhost:5173`
+
+## Required Environment
+
+```env
+VITE_SITE_URL=http://localhost:5173
+VITE_GRF_WHATSAPP_NUMBER=919952908818
+VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+VITE_SUPABASE_STORAGE_BUCKET=grf-media
+```
+
+`VITE_SUPABASE_PUBLISHABLE_KEY` is also supported for compatibility, but `VITE_SUPABASE_ANON_KEY` is preferred.
 
 ## Supabase
 
-1. Create a Supabase project.
-2. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` to `.env`.
-3. Add `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` for the backend API. Never expose the service role key in the Vite frontend.
-4. Run `supabase/schema.sql` in the SQL editor.
-5. Run `supabase/seed.sql` for the three launch tees and journal posts.
-6. Configure Google OAuth in Supabase Auth if needed.
-
-The schema creates a `profiles` row automatically after sign up, enables RLS for customer records, and allows admin/staff reads through the `profiles.role` field.
-
-To grant staff access:
-
-```sql
-update public.profiles
-set role = 'admin'
-where id = '<user_uuid>';
-```
-
-The React app uses the Supabase URL and publishable key in the Vite client. Service-role access, order creation, payment verification, and shipment creation stay in the backend.
-
-## Payments
-
-The frontend checkout posts to `/api/payments/create-order`. The backend creates the Razorpay order with `RAZORPAY_KEY_SECRET`, returns the public order data, and exposes `/api/payments/verify` for server-side signature verification.
-
-Checkout now requires a signed-in Supabase user. The API creates:
-
-- saved checkout address
-- synced cart and cart items
-- pending order
-- order items
-- created payment row
-
-Webhook endpoint:
+Run the migrations in `supabase/migrations` in order:
 
 ```txt
-POST /api/webhooks/razorpay
+202607140001_grf_schema.sql
+202607140002_grf_rls.sql
+202607140003_grf_storage.sql
+202607140004_grf_seed.sql
 ```
 
-Handle `payment.captured`, `payment.failed`, and `order.paid` there for reconciliation.
+Then create the first admin user in Supabase Auth and grant the `admin` role in `public.profiles`. See `SUPABASE_SETUP.md` and `ADMIN_SETUP.md`.
 
-After verified payment, the API marks the order paid, updates the payment row, and starts Shiprocket shipment creation. If Shiprocket is unavailable, a failed shipment row is stored with retry metadata instead of breaking payment success.
+## Routes
 
-## Shipping
+- `/` public GRF Growths site
+- `/admin/login` admin login
+- `/admin` dashboard
+- `/admin/breeds`
+- `/admin/birds`
+- `/admin/gallery`
+- `/admin/enquiries`
+- `/admin/testimonials`
+- `/admin/faqs`
+- `/admin/settings`
 
-Shiprocket shipment creation lives in `server/shiprocket.ts`. It is called after verified payment and is intentionally retry-safe: payment success should not fail just because the shipping API is temporarily unavailable.
+## Verification
 
-Store `shipment_id`, `awb_code`, courier name, tracking URL, status, retry count, and last error in the `shipments` table.
+```bash
+npm run lint
+npm run test
+npm run build
+```
 
-Customers can see database-backed order history in `/account` and can track by app order id or Razorpay order id in `/order-tracking`.
+## Netlify
 
-## Key Routes
+The app includes `netlify.toml` and `public/_redirects` for SPA fallback routing. Configure the `VITE_*` variables in Netlify before deploying.
 
-- `/` homepage
-- `/collections`
-- `/products/:slug`
-- `/cart`
-- `/checkout`
-- `/account`
-- `/wishlist`
-- `/search`
-- `/drop`
-- `/order-tracking`
-- `/admin`
-- `/journal`
-- `/about`
+## Notes
 
-## Production Notes
-
-- Move all admin writes, Razorpay verification, webhook updates, and Shiprocket calls to authenticated backend handlers.
-- Enforce stricter role policies for `admin` and `staff` using JWT custom claims or a backend authorization layer.
-- Replace placeholder editorial imagery with licensed campaign photography or generated brand assets before launch.
-- Add a retry worker for failed Shiprocket shipment rows before production.
-- Code split auth/admin/checkout routes to remove the Vite bundle-size warning.
-# cavve_site
+Legacy commerce files are still present but are not routed through the GRF public/admin app. They can be removed in a dedicated cleanup pass after the GRF launch is signed off.

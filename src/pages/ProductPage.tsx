@@ -26,14 +26,14 @@ export function ProductPage() {
     loadProduct()
   }, [slug])
 
-  if (loading) return <div className="section-padding page-header-offset" style={{ textAlign: 'center' }}>Syncing product protocol...</div>
-  if (!product) return <div className="section-padding page-header-offset">Product not found in current drop.</div>
+  if (loading) return <div className="section-padding page-header-offset" style={{ textAlign: 'center' }}>Opening the pantry...</div>
+  if (!product) return <div className="section-padding page-header-offset">This jar could not be found.</div>
 
   const isWishlisted = wishlist.includes(product.id)
 
   const handleAddToCart = () => {
     if (!selectedSize) {
-      alert('Please select a size')
+      alert('Please select a jar size')
       return
     }
     addToCart(product, selectedSize)
@@ -42,11 +42,11 @@ export function ProductPage() {
 
   return (
     <div className="product-page page-header-offset">
-      <SEO title={`${product.name} | CAVVE`} description={product.copy} />
+      <SEO title={`${product.name} | Atchi Pickles`} description={product.copy} />
       
       <div className="section-padding" style={{ paddingTop: '20px' }}>
-        <Link to="/collections" className="text-link" style={{ marginBottom: '40px', border: 'none' }}>
-          <ArrowLeft size={16} /> Back to Collection
+        <Link to="/shop" className="text-link" style={{ marginBottom: '40px', border: 'none' }}>
+          <ArrowLeft size={16} /> Back to the pantry
         </Link>
 
         <div className="product-detail-layout" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '80px' }}>
@@ -83,7 +83,7 @@ export function ProductPage() {
           <div className="product-info" style={{ position: 'sticky', top: '120px', height: 'fit-content' }}>
             <span className="eyebrow">{product.fit} / {product.gsm}</span>
             <h1 style={{ fontSize: '48px', marginBottom: '8px' }}>{product.name}</h1>
-            <p style={{ fontSize: '14px', color: 'var(--secondary)', marginBottom: '16px' }}>Premium oversized menswear essential by CAVVE.</p>
+            <p style={{ fontSize: '14px', color: 'var(--secondary)', marginBottom: '16px' }}>Small-batch homemade pickle, prepared with traditional care.</p>
             <p className="price" style={{ fontSize: '24px', fontWeight: 600, marginBottom: '40px' }}>
               {formatInr(product.price)}
               {product.compareAt && (
@@ -95,7 +95,7 @@ export function ProductPage() {
 
             <div className="size-selection" style={{ marginBottom: '32px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-                <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Select Size</span>
+                <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Select jar size</span>
               </div>
               <div className="size-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px', marginBottom: '16px' }}>
                 {product.sizes.map(size => (
@@ -118,7 +118,7 @@ export function ProductPage() {
                   </button>
                 ))}
               </div>
-              <p style={{ fontSize: '12px', color: 'var(--secondary)', fontStyle: 'italic' }}>Model is 6'0 wearing size L</p>
+              <p style={{ fontSize: '12px', color: 'var(--secondary)', fontStyle: 'italic' }}>Prepared fresh in limited kitchen batches.</p>
             </div>
 
             <div className="actions" style={{ display: 'flex', gap: '16px', marginBottom: '40px' }}>
@@ -127,7 +127,7 @@ export function ProductPage() {
                 style={{ flex: 1 }}
                 onClick={handleAddToCart}
               >
-                Add to Bag <ShoppingBag size={18} />
+                Add to cart <ShoppingBag size={18} />
               </button>
               <button 
                 className="secondary-button"
@@ -152,7 +152,7 @@ export function ProductPage() {
 
             <div style={{ marginBottom: '40px' }}>
               <button className="text-link" style={{ fontSize: '11px', border: 'none', padding: 0 }}>
-                <Ruler size={14} /> Size Guide
+                <Ruler size={14} /> Ingredients & nutrition
               </button>
             </div>
 
@@ -161,14 +161,14 @@ export function ProductPage() {
                 <Truck size={20} strokeWidth={1.5} />
                 <div>
                   <p style={{ fontSize: '13px', fontWeight: 700 }}>Free Shipping</p>
-                  <p style={{ fontSize: '12px', color: 'var(--secondary)' }}>Free shipping across India on prepaid orders.</p>
+                  <p style={{ fontSize: '12px', color: 'var(--secondary)' }}>Free shipping across India on orders above ₹799.</p>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: '16px' }}>
                 <RefreshCcw size={20} strokeWidth={1.5} />
                 <div>
-                  <p style={{ fontSize: '13px', fontWeight: 700 }}>Easy Returns</p>
-                  <p style={{ fontSize: '12px', color: 'var(--secondary)' }}>7-day exchange protocol.</p>
+                  <p style={{ fontSize: '13px', fontWeight: 700 }}>Packed with care</p>
+                  <p style={{ fontSize: '12px', color: 'var(--secondary)' }}>Secure, food-safe packaging for a happy journey.</p>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: '16px' }}>

@@ -7,7 +7,7 @@ import { journalPosts } from '../data/catalog'
 export function JournalPage() {
   return (
     <div className="journal-page page-header-offset">
-      <SEO title="Journal | CAVVE" description="Editorial insights into the protocol of discipline and design." />
+      <SEO title="Kitchen Journal | Atchi" description="Slow-food notes, family rituals and pickle stories from Atchi." />
 
       <section className="section-padding" style={{ paddingBottom: '40px' }}>
         <header style={{ marginBottom: '80px', textAlign: 'center' }}>
@@ -79,7 +79,7 @@ export function JournalPage() {
       <section className="section-padding" style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)', textAlign: 'center' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
           <span className="eyebrow">Intelligence</span>
-          <h2 style={{ fontSize: '40px', marginBottom: '24px' }}>Stay Disciplined.</h2>
+          <h2 style={{ fontSize: '40px', marginBottom: '24px' }}>Stay close to the kitchen.</h2>
           <p style={{ color: 'var(--secondary)', marginBottom: '40px' }}>Receive editorial updates and early access notifications directly to your terminal.</p>
           <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', gap: '12px' }}>
             <input 

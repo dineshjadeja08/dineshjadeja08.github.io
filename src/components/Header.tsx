@@ -1,89 +1,51 @@
+import { AnimatePresence, motion } from 'framer-motion'
+import { Heart, Leaf, Menu, Search, ShoppingBag, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Search, Heart, ShoppingBag, User, Menu, X } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect } from 'react'
 import { useCommerceStore } from '../store/cart'
 import { CartDrawer } from './CartDrawer'
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const { cart, wishlist, isCartOpen, openCart, closeCart } = useCommerceStore()
-  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0)
-  const wishlistCount = wishlist.length
   const { pathname } = useLocation()
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0)
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const onScroll = () => setScrolled(window.scrollY > 36)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
   useEffect(() => {
-    setMenuOpen(false)
+    const timer = window.setTimeout(() => setMenuOpen(false), 0)
+    return () => window.clearTimeout(timer)
   }, [pathname])
 
-  return (
-    <>
-      <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="header-left">
-          <Link to="/" className="logo">CAVVE</Link>
-        </div>
-
-        <nav className="nav-links">
-          <NavLink to="/collections">Collections</NavLink>
-          <NavLink to="/drop">Drop 001</NavLink>
-          <NavLink to="/journal">Journal</NavLink>
-          <NavLink to="/about">Manifesto</NavLink>
-        </nav>
-
-        <div className="header-actions">
-          <Link className="action-btn" to="/search" aria-label="Search"><Search size={20} strokeWidth={1.5} /></Link>
-          <Link className="action-btn" to="/wishlist" aria-label="Wishlist">
-            <Heart size={20} strokeWidth={1.5} />
-            {wishlistCount > 0 && <span className="cart-count">{wishlistCount}</span>}
-          </Link>
-          <button 
-            className="action-btn" 
-            onClick={openCart}
-            aria-label="Open cart drawer"
-          >
-            <ShoppingBag size={20} strokeWidth={1.5} />
-            {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
-          </button>
-          <Link className="action-btn" to="/account" aria-label="Account"><User size={20} strokeWidth={1.5} /></Link>
-          <button className="mobile-only action-btn" onClick={() => setMenuOpen(true)} aria-label="Menu"><Menu size={24} /></button>
-        </div>
-      </header>
-
-      <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
-
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div 
-            className="mobile-menu"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            style={{ 
-              position: 'fixed', inset: 0, zIndex: 1100, background: 'var(--bg)', 
-              display: 'flex', flexDirection: 'column', padding: '60px 5%' 
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '80px' }}>
-              <span className="logo">CAVVE</span>
-              <button onClick={() => setMenuOpen(false)} aria-label="Close menu"><X size={32} strokeWidth={1.5} /></button>
-            </div>
-            <nav style={{ display: 'grid', gap: '24px' }}>
-              <Link to="/collections" style={{ fontSize: '48px', fontFamily: 'var(--font-serif)' }}>Collections</Link>
-              <Link to="/drop" style={{ fontSize: '48px', fontFamily: 'var(--font-serif)' }}>Drop 001</Link>
-              <Link to="/journal" style={{ fontSize: '48px', fontFamily: 'var(--font-serif)' }}>Journal</Link>
-              <Link to="/about" style={{ fontSize: '48px', fontFamily: 'var(--font-serif)' }}>Manifesto</Link>
-              <Link to="/account" style={{ fontSize: '48px', fontFamily: 'var(--font-serif)' }}>Account</Link>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  )
+  return <>
+    <div className="atchi-note">Free delivery above ₹799 <i /> Handmade in small batches <i /> Dispatches in 2-3 days</div>
+    <header className={`atchi-header ${scrolled ? 'scrolled' : ''}`}>
+      <nav className="atchi-nav atchi-nav-left">
+        <NavLink to="/shop">Pantry</NavLink><NavLink to="/about">Our roots</NavLink>
+      </nav>
+      <Link className="atchi-logo" to="/"><Leaf size={18} /><strong>atchi</strong><span>pickles & preserves</span></Link>
+      <nav className="atchi-nav atchi-nav-right">
+        <NavLink to="/journal">Journal</NavLink><a href="/#ritual">The ritual</a>
+      </nav>
+      <div className="atchi-tools">
+        <Link to="/search" aria-label="Search pantry"><Search size={18} /></Link>
+        <Link to="/wishlist" aria-label="Saved jars"><Heart size={18} />{wishlist.length > 0 && <b>{wishlist.length}</b>}</Link>
+        <button onClick={openCart} aria-label="Open cart"><ShoppingBag size={18} />{cartCount > 0 && <b>{cartCount}</b>}</button>
+        <button className="atchi-menu-btn" onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu size={20} /></button>
+      </div>
+    </header>
+    <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
+    <AnimatePresence>
+      {menuOpen && <motion.aside className="atchi-mobile-menu" initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 26 }}>
+        <button onClick={() => setMenuOpen(false)} aria-label="Close menu"><X /></button>
+        <span>Open the pantry</span>
+        <Link to="/shop">Shop all jars</Link><Link to="/about">Our roots</Link><a href="/#ritual">The ritual</a><Link to="/journal">Kitchen journal</Link><Link to="/account">Your account</Link>
+      </motion.aside>}
+    </AnimatePresence>
+  </>
 }

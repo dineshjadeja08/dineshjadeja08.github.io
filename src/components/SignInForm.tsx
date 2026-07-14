@@ -106,7 +106,7 @@ export function SignInForm() {
             </>
           ) : (
             <>
-              {mode === 'signin' ? 'Sign In' : 'Join CAVVE'} <ArrowRight size={16} />
+              {mode === 'signin' ? 'Sign In' : 'Join Atchi'} <ArrowRight size={16} />
             </>
           )}
         </button>

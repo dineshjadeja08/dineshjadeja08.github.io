@@ -16,20 +16,20 @@ export function CartPage() {
   if (cart.length === 0) {
     return (
       <div className="section-padding page-header-offset" style={{ textAlign: 'center', padding: '160px 5%' }}>
-        <SEO title="Shopping Bag | CAVVE" description="Your bag is currently empty." />
+        <SEO title="Shopping Cart | Atchi" description="Your cart is currently empty." />
         <ShoppingBag size={48} style={{ opacity: 0.1, marginBottom: '24px' }} />
         <h1 style={{ fontSize: 'clamp(32px, 6vw, 48px)', marginBottom: '24px' }}>Bag Empty.</h1>
         <p style={{ color: 'var(--secondary)', marginBottom: '40px', maxWidth: '400px', margin: '0 auto 40px' }}>
-          Your protocol is currently unassigned. Return to the collection to build your uniform.
+          Your cart is waiting for something delicious. Return to the pantry to choose a jar.
         </p>
-        <Link to="/collections" className="primary-button">View Collection</Link>
+        <Link to="/shop" className="primary-button">Open the pantry</Link>
       </div>
     )
   }
 
   return (
     <div className="section-padding page-header-offset">
-      <SEO title="Shopping Bag | CAVVE" description={`Your bag has ${cart.length} items.`} />
+      <SEO title="Shopping Cart | Atchi" description={`Your cart has ${cart.length} items.`} />
       
       <header style={{ marginBottom: '80px', textAlign: 'center' }}>
         <span className="eyebrow">Inventory Protocol</span>

@@ -50,6 +50,16 @@ type DbProduct = {
   created_at: string
 }
 
+type RecentOrder = {
+  id: string
+  status: string
+  total_inr: number
+  created_at: string
+  profiles?: {
+    full_name?: string | null
+  } | null
+}
+
 export function AdminPage() {
   const { profile, loading } = useAuthState()
   const [stats, setStats] = useState<AdminStats>({
@@ -58,7 +68,7 @@ export function AdminPage() {
     totalCustomers: 0,
     pendingOrders: 0
   })
-  const [recentOrders, setRecentOrders] = useState<any[]>([])
+  const [recentOrders, setRecentOrders] = useState<RecentOrder[]>([])
   const [activeTab, setActiveTab] = useState('dashboard')
   
   // Collections State
@@ -109,7 +119,10 @@ export function AdminPage() {
         .order('created_at', { ascending: false })
         .limit(5)
       
-      setRecentOrders(recent || [])
+      setRecentOrders((recent || []).map((order) => ({
+        ...order,
+        profiles: Array.isArray(order.profiles) ? order.profiles[0] ?? null : order.profiles,
+      })))
 
       // Fetch Collections
       const { data: cols } = await supabase!.from('collections').select('*').order('created_at', { ascending: false })
@@ -223,11 +236,11 @@ export function AdminPage() {
 
   return (
     <div className="section-padding page-header-offset admin-layout">
-      <SEO title="Admin Panel" description="CAVVE Administration Control Center" />
+      <SEO title="Admin Panel" description="Atchi administration control center" />
       
       <aside className="admin-sidebar">
         <div className="admin-brand">
-          <span className="eyebrow">CAVVE Control</span>
+          <span className="eyebrow">Atchi Control</span>
           <h2>Protocol</h2>
         </div>
         
@@ -595,7 +608,7 @@ export function AdminPage() {
            <div style={{ textAlign: 'center', padding: '100px 0' }}>
              <Clock size={48} style={{ opacity: 0.1, marginBottom: '24px' }} />
              <h2>Order Protocol Manager</h2>
-             <p style={{ color: 'var(--secondary)' }}>Full order management module coming in the next protocol update.</p>
+             <p style={{ color: 'var(--secondary)' }}>Full order management module coming in the next update.</p>
            </div>
         )}
         
@@ -603,7 +616,7 @@ export function AdminPage() {
            <div style={{ textAlign: 'center', padding: '100px 0' }}>
              <Users size={48} style={{ opacity: 0.1, marginBottom: '24px' }} />
              <h2>Community Protocol</h2>
-             <p style={{ color: 'var(--secondary)' }}>Customer management module coming in the next protocol update.</p>
+             <p style={{ color: 'var(--secondary)' }}>Customer management module coming in the next update.</p>
            </div>
         )}
       </main>

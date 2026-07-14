@@ -8,10 +8,28 @@ import { SignInForm } from '../components/SignInForm'
 import { SEO } from '../components/SEO'
 import { formatInr } from '../lib/utils'
 
+type AccountOrderItem = {
+  product?: {
+    gallery?: string[]
+    name?: string
+    price?: number
+  }
+  size?: string
+  quantity?: number
+}
+
+type AccountOrder = {
+  id: string
+  created_at: string
+  status: string
+  total_inr: number
+  items?: AccountOrderItem[]
+}
+
 export function AccountPage() {
   const { session, profile, loading } = useAuthState()
   const [activeTab, setActiveTab] = useState('orders')
-  const [orders, setOrders] = useState<any[]>([])
+  const [orders, setOrders] = useState<AccountOrder[]>([])
   const [isFetching, setIsFetching] = useState(false)
 
   useEffect(() => {
@@ -39,14 +57,14 @@ export function AccountPage() {
   if (!session) {
     return (
       <div className="account-page page-header-offset section-padding">
-        <SEO title="Sign In | CAVVE" description="Access your personal protocol and order history." />
+        <SEO title="Sign In | Atchi" description="Access your Atchi account and order history." />
         <div className="split-grid" style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <div>
             <span className="eyebrow">The System</span>
             <h1 style={{ fontSize: 'clamp(40px, 8vw, 64px)', lineHeight: 1, marginBottom: '32px' }}>Personal <span className="serif" style={{ fontStyle: 'italic' }}>Protocol</span></h1>
             <p style={{ color: 'var(--secondary)', fontSize: '16px', lineHeight: 1.8 }}>
               Access your order history, track active shipments, and manage your preferred delivery addresses. 
-              Join the uniform system.
+              Join the Atchi table.
             </p>
           </div>
           <SignInForm />
@@ -57,7 +75,7 @@ export function AccountPage() {
 
   return (
     <div className="account-page page-header-offset section-padding">
-      <SEO title="My Protocol | CAVVE" description="Manage your account and track orders." />
+      <SEO title="My Account | Atchi" description="Manage your account and track orders." />
       
       <div className="account-layout">
         {/* Sidebar */}
@@ -105,7 +123,7 @@ export function AccountPage() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <div className="header-flex" style={{ marginBottom: '60px' }}>
                 <h2 style={{ fontSize: '40px' }}>Recent Repetitions</h2>
-                <span className="eyebrow" style={{ marginBottom: 0 }}>Showing {orders.length} protocol assignments</span>
+                <span className="eyebrow" style={{ marginBottom: 0 }}>Showing {orders.length} orders</span>
               </div>
 
               {isFetching ? (
@@ -113,8 +131,8 @@ export function AccountPage() {
               ) : orders.length === 0 ? (
                 <div style={{ textAlign: 'center', padding: '100px 0', border: '1px solid var(--border)', background: 'white' }}>
                   <ShoppingBag size={48} style={{ opacity: 0.1, marginBottom: '24px' }} />
-                  <p style={{ color: 'var(--secondary)' }}>No protocol assignments found in your history.</p>
-                  <Link to="/collections" className="text-link" style={{ marginTop: '24px' }}>Build your uniform <ChevronRight size={14} /></Link>
+                  <p style={{ color: 'var(--secondary)' }}>No orders found in your history.</p>
+                  <Link to="/shop" className="text-link" style={{ marginTop: '24px' }}>Open the pantry <ChevronRight size={14} /></Link>
                 </div>
               ) : (
                 <div style={{ display: 'grid', gap: '24px' }}>
@@ -134,14 +152,14 @@ export function AccountPage() {
                       
                       {/* Items loop - assuming order.items is an array of objects */}
                       <div style={{ display: 'grid', gap: '16px' }}>
-                        {order.items?.map((item: any, idx: number) => (
+                        {order.items?.map((item, idx) => (
                           <div key={idx} style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
                             <div style={{ width: '60px', height: '80px', background: 'var(--surface)', overflow: 'hidden' }}>
                               <img src={item.product?.gallery?.[0]} alt={item.product?.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             </div>
                             <div>
                               <p style={{ fontWeight: 700, fontSize: '14px' }}>{item.product?.name} ({item.size})</p>
-                              <p style={{ fontSize: '14px', color: 'var(--secondary)' }}>{formatInr(item.product?.price)} x {item.quantity}</p>
+                              <p style={{ fontSize: '14px', color: 'var(--secondary)' }}>{formatInr(item.product?.price ?? 0)} x {item.quantity ?? 0}</p>
                             </div>
                           </div>
                         ))}

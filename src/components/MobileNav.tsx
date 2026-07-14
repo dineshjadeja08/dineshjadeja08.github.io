@@ -11,7 +11,7 @@ export function MobileNav() {
         <Home size={20} />
         <span>Home</span>
       </NavLink>
-      <NavLink to="/collections" className={({ isActive }) => isActive ? 'active' : ''}>
+      <NavLink to="/shop" className={({ isActive }) => isActive ? 'active' : ''}>
         <Search size={20} />
         <span>Shop</span>
       </NavLink>

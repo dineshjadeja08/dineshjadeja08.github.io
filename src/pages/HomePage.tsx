@@ -1,136 +1,74 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { ArrowDownRight, ArrowRight, Check, Heart, Leaf, Package, Sparkles, Star, Sun, Truck } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Play, ShoppingBag } from 'lucide-react'
-import { SEO } from '../components/SEO'
 import { ProductCard } from '../components/ProductCard'
-import type { Product } from '../data/catalog'
-import { fetchDbProducts } from '../lib/products'
+import { products } from '../data/catalog'
+import { SEO } from '../components/SEO'
+
+const ritual = [
+  ['01', 'Pick', 'Raw mangoes arrive while they still carry the morning cool.'],
+  ['02', 'Pound', 'The masala is ground in patient, fragrant batches.'],
+  ['03', 'Wait', 'Sun, oil and time turn every jar into something deeper.'],
+]
 
 export function HomePage() {
-  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([])
-  const [loading, setLoading] = useState(true)
+  const { scrollYProgress } = useScroll()
+  const heroY = useTransform(scrollYProgress, [0, .2], [0, 110])
+  return <div className="atchi-home">
+    <SEO title="Atchi Pickles | A Spoonful Of Home" description="Atchi makes small-batch Indian pickles with family recipes and a little patience." />
+    <section className="atchi-hero">
+      <motion.div className="atchi-hero-photo" style={{ y: heroY }}>
+        <motion.img src="/images/atchi/hero-kitchen.png" alt="Atchi mango pickle in a warm home kitchen" animate={{ scale: [1.03, 1.1, 1.03] }} transition={{ duration: 15, repeat: Infinity }} />
+      </motion.div>
+      <div className="atchi-hero-card">
+        <span><Leaf size={13} /> From a family kitchen</span>
+        <h1>A little<br /><em>achar.</em><br />A lot of<br />home.</h1>
+        <p>Bright mangoes, sun-warmed spices and recipes that know their way back to your table.</p>
+        <Link to="/shop">Open the pantry <ArrowRight size={16} /></Link>
+      </div>
+      <div className="atchi-hero-stamp"><Sun /><b>slow food</b><small>made under the sun</small></div>
+      <div className="atchi-side-note">scroll for a spoonful <ArrowDownRight /></div>
+    </section>
 
-  useEffect(() => {
-    async function loadFeatured() {
-      const prods = await fetchDbProducts()
-      setFeaturedProducts(prods.slice(0, 3))
-      setLoading(false)
-    }
-    loadFeatured()
-  }, [])
+    <section className="atchi-marquee"><div>hand-cut mangoes <i /> stone-ground masala <i /> cold-pressed oils <i /> recipes with roots <i /> hand-cut mangoes <i /> stone-ground masala <i /> cold-pressed oils</div></section>
 
-  return (
-    <div className="home-page">
-      <SEO 
-        title="CAVVE | Wear Discipline" 
-        description="Premium minimalist menswear engineered for the ambitious. Discover our heavyweight collection." 
-      />
+    <section className="atchi-opening">
+      <motion.div initial={{ opacity: 0, x: -45 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+        <span className="atchi-label">01 · The feeling</span>
+        <h2>Some flavours<br />do not need an<br /><em>introduction.</em></h2>
+      </motion.div>
+      <motion.div className="atchi-opening-note" initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <Leaf /><p>They arrive with hot rice, a quiet afternoon and the familiar clink of a spoon against glass.</p><Link to="/about">Read our story <ArrowRight /></Link>
+      </motion.div>
+    </section>
 
-      {/* Cinematic Hero */}
-      <section className="hero-section">
-        <div className="section-padding" style={{ width: '100%', position: 'relative', zIndex: 10 }}>
-          <motion.div 
-            className="hero-content"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
-          >
-            <span className="eyebrow" style={{ color: 'var(--primary)', marginBottom: '16px' }}>Protocol 001 / Launch</span>
-            <h1 className="hero-title">Wear<br /><span className="serif" style={{ fontStyle: 'italic' }}>Discipline</span></h1>
-            <p style={{ maxWidth: '400px', fontSize: '16px', color: 'var(--secondary)', marginBottom: '40px', lineHeight: 1.6 }}>
-              A uniform for the focused. Heavyweight silhouettes engineered with clinical precision.
-            </p>
-            <div className="hero-buttons">
-              <Link to="/collections" className="primary-button">
-                Shop Collection <ArrowRight size={16} />
-              </Link>
-              <button className="secondary-button" style={{ border: 'none' }}>
-                <Play size={16} fill="currentColor" /> Watch Film
-              </button>
-            </div>
-          </motion.div>
-        </div>
+    <section className="atchi-shelf">
+      <div className="atchi-section-top"><span className="atchi-label">02 · Pantry favourites</span><Link to="/shop">See every jar <ArrowRight /></Link></div>
+      <h2>Pick your<br /><em>plus one.</em></h2>
+      <div className="atchi-shelf-grid">{products.slice(0, 4).map((product, index) => <motion.div key={product.id} initial={{ opacity: 0, y: 45 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * .1 }}><ProductCard product={product} /></motion.div>)}</div>
+    </section>
 
-        <motion.div 
-          className="hero-image-container"
-          initial={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
-          animate={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
-          transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
-        >
-          <img 
-            src="https://images.unsplash.com/photo-1550246140-5119ae4790b8?auto=format&fit=crop&w=1200&q=90" 
-            alt="Men's Luxury Editorial" 
-            className="hero-image"
-          />
-        </motion.div>
-      </section>
+    <section className="atchi-ritual" id="ritual">
+      <div className="atchi-ritual-intro"><span className="atchi-label">03 · The ritual</span><h2>Good pickle<br /><em>takes its time.</em></h2><p>No shortcuts. No hurried batches. Just the steady rituals that make a jar taste alive.</p></div>
+      <div className="atchi-ritual-list">{ritual.map(([number, title, copy], index) => <motion.article key={number} initial={{ opacity: 0, x: 60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * .12 }}><b>{number}</b><span>{title}</span><p>{copy}</p><Leaf /></motion.article>)}</div>
+    </section>
 
-      {/* Philosophy Section */}
-      <section className="section-padding" style={{ background: 'var(--primary)', color: 'white' }}>
-        <div className="container philosophy-grid">
-          <div>
-            <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.4)' }}>The Manifesto</span>
-            <h2 style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 1.1, marginBottom: '40px' }}>
-              Restraint is the ultimate <span className="serif" style={{ fontStyle: 'italic', color: 'var(--accent)' }}>sophistication</span>.
-            </h2>
-          </div>
-          <div>
-            <p style={{ fontSize: '18px', lineHeight: 1.8, color: 'rgba(255,255,255,0.7)', marginBottom: '40px' }}>
-              We don't build trends. We build standards. Every seam, every gram of cotton, and every silhouette is a testament to the discipline of the modern man. 
-            </p>
-            <Link to="/about" className="text-link" style={{ color: 'white', borderColor: 'white' }}>
-              Our Story <ArrowRight size={14} />
-            </Link>
-          </div>
-        </div>
-      </section>
+    <section className="atchi-quote">
+      <motion.div initial={{ scale: .92, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }}>
+        <Sparkles /><h2>“The mango pickle disappeared<br />before the weekend did.”</h2><div>{[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" />)}</div><p>ANJALI RAO · HYDERABAD</p>
+      </motion.div>
+    </section>
 
-      {/* Featured Products - Editorial Grid */}
-      <section className="section-padding">
-        <header className="header-flex" style={{ marginBottom: '80px' }}>
-          <div>
-            <span className="eyebrow">The Catalog</span>
-            <h2 style={{ fontSize: 'clamp(32px, 6vw, 48px)' }}>Core Repetitions</h2>
-          </div>
-          <Link to="/collections" className="text-link">View All <ArrowRight size={14} /></Link>
-        </header>
+    <section className="atchi-promises">
+      <div><Check /><b>Nothing artificial</b><p>Natural ingredients and familiar pantry staples.</p></div>
+      <div><Heart /><b>Made like home</b><p>Handmade in small batches with family recipes.</p></div>
+      <div><Truck /><b>Travels with care</b><p>Food-safe packaging and pan-India delivery.</p></div>
+      <div><Package /><b>Always fresh</b><p>Packed only when each batch is ready.</p></div>
+    </section>
 
-        {loading ? (
-          <div style={{ textAlign: 'center', padding: '100px 0' }}>Syncing protocol catalog...</div>
-        ) : (
-          <div className="product-grid">
-            {featuredProducts.map((product, i) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <ProductCard product={product} />
-              </motion.div>
-            ))}
-          </div>
-        )}
-      </section>
-
-      {/* Full Width Callout */}
-      <section className="drop-callout" style={{ position: 'relative', overflow: 'hidden' }}>
-        <img 
-          src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=2000&q=90" 
-          alt="Men's Minimalist Fashion"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }}
-        />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', color: 'white' }}>
-          <div style={{ padding: '0 5%' }}>
-            <h2 style={{ fontSize: 'clamp(40px, 6vw, 100px)', marginBottom: '40px' }}>DROP 001 IS LIVE</h2>
-            <Link to="/collections" className="primary-button" style={{ background: 'white', color: 'black' }}>
-              Secure Your Uniform <ShoppingBag size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
-  )
+    <section className="atchi-letter">
+      <span>A note from our kitchen</span><h2>Come for the pickle.<br /><em>Stay for the stories.</em></h2><p>Fresh batches, serving ideas and letters from home. Occasionally, a little surprise.</p>
+      <form onSubmit={event => event.preventDefault()}><input type="email" placeholder="your@email.com" /><button>Join the table <ArrowRight /></button></form>
+    </section>
+  </div>
 }

@@ -15,6 +15,7 @@ const AuthContext = createContext<{
   loading: boolean
 }>({ session: null, profile: null, loading: true })
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAuthState() {
   return useContext(AuthContext)
 }
@@ -50,7 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         session.user.user_metadata?.full_name ??
         session.user.user_metadata?.name ??
         session.user.email?.split('@')[0] ??
-        'CAVVE customer'
+        'Atchi customer'
 
       await supabase.from('profiles').upsert({
         id: session.user.id,

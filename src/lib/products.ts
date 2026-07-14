@@ -2,6 +2,23 @@ import { supabase } from './supabase'
 import type { Product } from '../data/catalog'
 import { products as localCatalog } from '../data/catalog'
 
+type DbProductInput = {
+  id: string
+  slug: string
+  name: string
+  color?: string
+  color_hex?: string
+  details?: string[]
+  price_inr: number
+  compare_at_inr?: number | null
+  fit?: string
+  gsm?: string
+  sizes?: string[]
+  stock?: number
+  images?: string[]
+  description?: string
+}
+
 export async function fetchDbProducts(): Promise<Product[]> {
   if (!supabase) return localCatalog
 
@@ -12,14 +29,17 @@ export async function fetchDbProducts(): Promise<Product[]> {
     .order('created_at', { ascending: false })
 
   if (error || !data || data.length === 0) {
-    console.error('Error fetching products or none found:', error)
+    if (import.meta.env.DEV) console.info('Using local Atchi catalog:', error?.message || 'no remote products')
     return localCatalog
   }
 
-  return data.map(mapDbProductToFrontend)
+  const mapped = data.map(mapDbProductToFrontend)
+  return mapped.some((product) => product.slug.includes('pickle')) ? mapped : localCatalog
 }
 
 export async function fetchDbProductBySlug(slug: string): Promise<Product | null> {
+  const localProduct = localCatalog.find(p => p.slug === slug)
+  if (localProduct) return localProduct
   if (!supabase) return localCatalog.find(p => p.slug === slug) || null
 
   const { data, error } = await supabase
@@ -33,10 +53,10 @@ export async function fetchDbProductBySlug(slug: string): Promise<Product | null
   return mapDbProductToFrontend(data)
 }
 
-function mapDbProductToFrontend(db: any): Product {
+function mapDbProductToFrontend(db: DbProductInput): Product {
   let color = db.color || 'Onyx'
   let colorHex = db.color_hex || '#000000'
-  let details = db.details || ['240 GSM Compact Cotton', 'Boxy oversized fit', 'Structural integrity']
+  const details = db.details || ['240 GSM Compact Cotton', 'Boxy oversized fit', 'Structural integrity']
 
   if (db.slug.includes('black')) {
     color = 'Black'
@@ -49,18 +69,6 @@ function mapDbProductToFrontend(db: any): Product {
     colorHex = '#F5F5F2'
   }
   
-  if (db.slug.includes('drop001')) {
-    details = [
-        'Premium heavyweight cotton feel',
-        'Relaxed oversized fit',
-        'Soft breathable fabric',
-        'Drop shoulder silhouette',
-        'Minimal chest branding',
-        'Everyday comfort',
-        'Unisex-inspired modern fit'
-    ]
-  }
-
   return {
     id: db.id,
     slug: db.slug,

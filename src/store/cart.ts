@@ -60,6 +60,6 @@ export const useCommerceStore = create<CommerceState>()(
         })),
       clearCart: () => set({ cart: [] }),
     }),
-    { name: 'cavve-commerce' },
+    { name: 'atchi-commerce' },
   ),
 )
