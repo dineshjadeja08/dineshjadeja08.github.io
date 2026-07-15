@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://grfgrowths.netlify.app/sitemap.xml
+Sitemap: https://dineshkumar.dev/sitemap.xml
