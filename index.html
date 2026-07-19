@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Default SEO Meta Tags -->
+    <title>Dinesh Kumar | Freelance Web Developer</title>
+    <meta name="description" content="Freelance web developer from Tamil Nadu building modern business websites, e-commerce platforms, web applications and backend solutions." />
+    <meta name="theme-color" content="#F7F4EF" />
+  </head>
+  <body>
+    <!-- Skip to Content link for Accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-brand-peach focus:text-brand-text focus:px-4 focus:py-2 focus:rounded-brand-sm focus:z-50 focus:font-semibold">
+      Skip to content
+    </a>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Hidden static Netlify form for build-time detection -->
+    <form 
+      name="project-enquiry" 
+      data-netlify="true" 
+      data-netlify-honeypot="bot-field" 
+      hidden
+    >
+      <input type="hidden" name="form-name" value="project-enquiry" />
+      <input type="hidden" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="phone" />
+      <input type="text" name="business" />
+      <select name="projectType">
+        <option value="Business website">Business website</option>
+        <option value="Landing page">Landing page</option>
+        <option value="E-commerce website">E-commerce website</option>
+        <option value="Web application">Web application</option>
+        <option value="Admin dashboard">Admin dashboard</option>
+        <option value="Website redesign">Website redesign</option>
+        <option value="Backend API">Backend API</option>
+        <option value="Other">Other</option>
+      </select>
+      <select name="budget">
+        <option value="Below ₹10,000">Below ₹10,000</option>
+        <option value="₹10,000 – ₹25,000">₹10,000 – ₹25,000</option>
+        <option value="₹25,000 – ₹50,000">₹25,000 – ₹50,000</option>
+        <option value="₹50,000+">₹50,000+</option>
+        <option value="Not sure yet">Not sure yet</option>
+      </select>
+      <select name="timeline">
+        <option value="As soon as possible">As soon as possible</option>
+        <option value="Within one month">Within one month</option>
+        <option value="Within two to three months">Within two to three months</option>
+        <option value="Flexible">Flexible</option>
+        <option value="Just exploring">Just exploring</option>
+      </select>
+      <textarea name="message"></textarea>
+      <input type="checkbox" name="consent" />
+    </form>
+  </body>
+</html>
