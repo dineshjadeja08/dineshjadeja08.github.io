@@ -8,7 +8,7 @@ export const processSteps: ProcessStep[] = [
   {
     number: "01",
     title: "Discovery",
-    description: "We discuss your business, target users, goals, required features, timeline and expected budget."
+    description: "I learn about your business, target users, goals, required features, timeline and expected budget."
   },
   {
     number: "02",

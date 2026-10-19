@@ -11,7 +11,7 @@ export const getWhatsAppLink = (message?: string): string | null => {
   }
 
   // Strip +, spaces, brackets, hyphens
-  const cleanNumber = number.replace(/[+\s\(\)\-]/g, '');
+  const cleanNumber = number.replace(/[+\s()-]/g, '');
 
   if (!cleanNumber) {
     return null;

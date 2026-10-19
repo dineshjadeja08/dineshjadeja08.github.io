@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { BookingProvider } from './hooks/useBooking';
+import { BookingProvider } from './components/booking/BookingProvider';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import Projects from './pages/Projects';

@@ -36,8 +36,8 @@ export const TermsConditions = () => {
       <section>
         <h2>3. Pricing and Availability</h2>
         <p>
-          Pricing shown on the website is an indicative starting point. Final quotes depend on
-          project scope, features, content, integrations, timelines and support requirements.
+          Every quote is prepared for the specific project. Final pricing depends on scope,
+          features, content, integrations, timelines and support requirements.
           Availability may change based on current workload.
         </p>
       </section>

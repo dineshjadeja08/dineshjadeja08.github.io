@@ -55,7 +55,7 @@ export const Footer = () => {
               </div>
             </Link>
             <p className="text-xs text-[#8a8782] leading-relaxed">
-              Building fast, modern and scalable websites that help your business grow.
+              Independent web developer building thoughtful websites and practical digital products from Tirupattur.
             </p>
             
             {/* Social Icons row */}
@@ -140,10 +140,10 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Col 4: Resources */}
+          {/* Col 4: Working together */}
           <div>
             <h4 className="font-heading font-bold text-xs text-white uppercase tracking-widest mb-6">
-              Resources
+              Working Together
             </h4>
             <ul className="space-y-3 text-xs">
               <li>
@@ -165,23 +165,11 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <button 
-                  onClick={handleBookClick}
-                  className="hover:text-white text-left transition-colors duration-150"
-                >
-                  Pricing
+                <button onClick={handleBookClick} className="hover:text-white text-left transition-colors duration-150">
+                  Book a Call
                 </button>
               </li>
-              <li>
-                <a 
-                  href="#reviews" 
-                  onClick={(e) => handleHashLinkClick(e, '#reviews')}
-                  className="hover:text-white transition-colors duration-150"
-                >
-                  Reviews
-                </a>
-              </li>
-              <li className="text-[#555555]">Blog (Coming Soon)</li>
+              <li><Link to="/projects" className="hover:text-white transition-colors duration-150">Selected Work</Link></li>
             </ul>
           </div>
 

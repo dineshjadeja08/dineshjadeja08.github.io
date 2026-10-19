@@ -21,9 +21,9 @@ export const services: Service[] = [
   {
     id: "landing-pages",
     title: "Landing Pages",
-    description: "High-converting landing pages for your product or service.",
+    description: "Focused landing pages for your product or service.",
     deliverables: [
-      "Strong conversion flow",
+      "Clear page flow",
       "Mobile-first design",
       "Clear call-to-action sections",
       "Enquiry collection",

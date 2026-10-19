@@ -10,29 +10,20 @@ import {
   Globe2,
   LayoutTemplate,
   Mail,
+  MapPin,
   PenTool,
   Rocket,
-  Search,
   ShoppingCart,
-  Smartphone,
-  Star,
-  TestTubeDiagonal,
-  Zap
+  TestTubeDiagonal
 } from 'lucide-react';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import portrait from '../assets/images/dinesh-portrait.jpg';
-import cavveThumb from '../assets/images/reference/project-cavve.png';
-import grfThumb from '../assets/images/reference/project-grf.png';
-import linksyncThumb from '../assets/images/reference/project-linksync.png';
-import xenfirmThumb from '../assets/images/reference/project-xenfirm.png';
 import SEO from '../components/common/SEO';
 import { siteConfig } from '../config/site';
 import { projects } from '../data/projects';
 import { faqs } from '../data/faqs';
 import { processSteps } from '../data/process';
 import { services } from '../data/services';
-import { testimonials } from '../data/testimonials';
 import { useBooking } from '../hooks/useBooking';
 import { trackEvent } from '../lib/analytics';
 
@@ -46,38 +37,9 @@ const serviceIconClasses = [
   'bg-[#fff3db] text-[#c98212]'
 ];
 const processIcons = [BriefcaseBusiness, LayoutTemplate, PenTool, Code2, TestTubeDiagonal, Rocket];
-const projectOrder = ['grf-growths', 'cavve', 'linksync', 'xenfirm'];
-const projectThumbs: Record<string, string> = {
-  'grf-growths': grfThumb,
-  cavve: cavveThumb,
-  linksync: linksyncThumb,
-  xenfirm: xenfirmThumb
-};
-const pricingPackages = [
-  {
-    name: 'Starter Website',
-    price: 'From ₹10k',
-    description: 'For businesses that need a credible first impression and a direct enquiry path.',
-    features: ['Outcome-focused homepage', 'Responsive layout', 'Contact or WhatsApp CTA']
-  },
-  {
-    name: 'Business Growth',
-    price: 'From ₹25k',
-    description: 'For brands that want service pages, trust sections and a stronger lead-generation flow.',
-    features: ['5-8 conversion sections', 'Proof and FAQ blocks', 'SEO-ready page structure'],
-    featured: true
-  },
-  {
-    name: 'Custom Product',
-    price: 'Custom',
-    description: 'For SaaS MVPs, dashboards, e-commerce flows and backend systems that support growth.',
-    features: ['Auth and database flows', 'Admin/dashboard UI', 'API or deployment support']
-  }
-];
-
+const projectOrder = ['grf-growths', 'cavve', 'linksync', 'clientease-crm'];
 export const Home = () => {
   const { openBooking } = useBooking();
-  const [currentReview, setCurrentReview] = useState(0);
   const featuredProjects = projects
     .filter((project) => project.featured)
     .sort((a, b) => projectOrder.indexOf(a.slug) - projectOrder.indexOf(b.slug))
@@ -86,14 +48,6 @@ export const Home = () => {
   const handleBookClick = (source: string) => {
     trackEvent('booking_modal_opened', { source });
     openBooking();
-  };
-
-  const activeTestimonial = testimonials[currentReview];
-  const nextReview = () => {
-    setCurrentReview((current) => (current + 1) % testimonials.length);
-  };
-  const prevReview = () => {
-    setCurrentReview((current) => (current - 1 + testimonials.length) % testimonials.length);
   };
 
   const homepageSchema = [
@@ -122,8 +76,8 @@ export const Home = () => {
   return (
     <div className="home-shell">
       <SEO
-        title="Dinesh Kumar | Conversion-Focused Freelance Web Developer"
-        description="Conversion-focused freelance web developer building fast websites, landing pages and web apps that help businesses earn trust and generate enquiries."
+        title="Dinesh Kumar | Freelance Web Developer"
+        description="Independent web developer from Tamil Nadu designing thoughtful websites, web applications and practical digital products."
         canonicalPath="/"
         schema={homepageSchema}
       />
@@ -131,25 +85,26 @@ export const Home = () => {
       <section className="site-container hero-section">
         <div className="hero-copy">
           <div className="intro-pill">
-            <span>👋</span>
-            <span>Available for conversion-focused websites</span>
+            <span className="availability-dot" aria-hidden="true" />
+            <span>Available for select freelance projects</span>
           </div>
 
           <h1>
-            I build websites that
-            <span>turn visitors into leads</span>
-            for growing businesses.
+            I design and build
+            <span>thoughtful digital products</span>
+            for ambitious ideas.
           </h1>
 
           <p>
-            I design and develop fast, trustworthy websites with clear messaging,
-            proof sections and enquiry flows that help clients take action.
+            I’m Dinesh, an independent web developer from Tamil Nadu. I turn ideas
+            into clear, responsive websites and practical web applications using
+            React, TypeScript and Python.
           </p>
 
           <div className="hero-actions">
             <button type="button" className="btn btn-dark" onClick={() => handleBookClick('hero')}>
               <Calendar size={16} />
-              <span>Book a Free Strategy Call</span>
+              <span>Start a Project</span>
             </button>
             <a href="#work" className="btn btn-light">
               <span>View My Work</span>
@@ -160,50 +115,22 @@ export const Home = () => {
 
         <div className="hero-visual" aria-label="Dinesh Kumar profile highlight">
           <div className="hero-dots" />
-          <div className="curved-arrow" aria-hidden="true">
-            <svg viewBox="0 0 130 78" role="img">
-              <path d="M118 18C82 4 43 23 20 58" />
-              <path d="M101 12l18 7-10 14" />
-            </svg>
-          </div>
           <img src={portrait} alt="Dinesh Kumar" className="hero-portrait" />
-
-          <div className="floating-stat stat-top">
-            <strong>5+</strong>
-            <span>Projects<br />Completed</span>
+          <div className="profile-location">
+            <MapPin size={15} />
+            <span>Tirupattur, Tamil Nadu</span>
           </div>
-          <div className="floating-stat stat-left">
-            <strong>100%</strong>
-            <span>Lead-Focused<br />Builds</span>
-          </div>
-          <div className="floating-stat stat-right">
-            <strong>2+</strong>
-            <span>Years of<br />Experience</span>
-          </div>
-          <div className="client-badge">
-            <div className="avatar-stack">
-              <span>R</span>
-              <span>A</span>
-            </div>
-            <div>
-              <strong>Happy Clients</strong>
-              <div className="rating-row">
-                <Star size={11} fill="currentColor" />
-                <Star size={11} fill="currentColor" />
-                <Star size={11} fill="currentColor" />
-                <Star size={11} fill="currentColor" />
-                <Star size={11} fill="currentColor" />
-                <span>5.0</span>
-              </div>
-            </div>
+          <div className="profile-caption">
+            <strong>Dinesh Kumar</strong>
+            <span>Web Developer &amp; Digital Product Builder</span>
           </div>
         </div>
 
         <div className="trust-strip">
-          <div><Zap size={15} />Fast Launch</div>
-          <div><Code2 size={15} />Clean Build</div>
-          <div><Search size={15} />SEO Ready</div>
-          <div><Smartphone size={15} />Mobile First</div>
+          <div><Globe2 size={15} />Business websites</div>
+          <div><LayoutTemplate size={15} />SaaS &amp; dashboards</div>
+          <div><ShoppingCart size={15} />E-commerce</div>
+          <div><Database size={15} />APIs &amp; integrations</div>
         </div>
       </section>
 
@@ -212,16 +139,16 @@ export const Home = () => {
           <img src={portrait} alt="Dinesh Kumar working" />
           <div className="about-copy">
             <span className="section-kicker">About Me</span>
-            <h2>Building websites around trust, clarity and enquiries.</h2>
+            <h2>A developer who cares about how the whole product feels.</h2>
             <p>
-              I help business owners turn their offer into a clean online experience:
-              clear copy, useful sections, fast performance and calls-to-action that
-              make it easy for customers to enquire.
+              I work directly with founders and business owners, from the first idea
+              to the final deployment. I care about clear interfaces, useful features
+              and code that stays understandable after launch.
             </p>
             <ul className="check-list">
-              <li><CheckCircle2 size={17} />Clear Service Positioning</li>
-              <li><CheckCircle2 size={17} />Trust-Building Page Structure</li>
-              <li><CheckCircle2 size={17} />Enquiry-Focused CTAs</li>
+              <li><CheckCircle2 size={17} />One-to-one collaboration</li>
+              <li><CheckCircle2 size={17} />Design and development together</li>
+              <li><CheckCircle2 size={17} />Practical launch support</li>
             </ul>
             <Link to="/about" className="btn btn-dark about-btn">
               <span>More About Me</span>
@@ -234,10 +161,10 @@ export const Home = () => {
           <div className="section-head">
             <div>
               <span className="section-kicker">What I Do</span>
-              <h2>Conversion-focused services</h2>
+              <h2>What I can build with you</h2>
             </div>
             <button type="button" onClick={() => handleBookClick('services_link')}>
-              Plan My Website
+              Discuss a Project
               <ArrowRight size={15} />
             </button>
           </div>
@@ -264,7 +191,7 @@ export const Home = () => {
         <div className="section-head">
           <div>
             <span className="section-kicker">My Work</span>
-            <h2>Projects built to solve business problems</h2>
+            <h2>A selection of products I’ve built</h2>
           </div>
           <Link to="/projects" onClick={() => trackEvent('projects_view_all_clicked')}>
             View All Projects
@@ -280,18 +207,17 @@ export const Home = () => {
                 className={`project-thumb project-thumb-${index + 1}`}
                 onClick={() => trackEvent('project_case_study_opened', { slug: project.slug, source: 'home_featured' })}
               >
-                <img src={projectThumbs[project.slug]} alt={`${project.name} preview`} />
+                <img src={project.image} alt={`${project.name} preview`} />
               </Link>
               <div className="project-body">
                 <div>
                   <h3>{project.name}</h3>
-                  <p>{project.conversionGoal || project.description}</p>
-                  {project.resultMetric && <strong className="project-result">{project.resultMetric}</strong>}
+                  <p>{project.description}</p>
                 </div>
                 <div className="project-foot">
                   <div>
                     {project.technologies.slice(0, 3).map((tech) => (
-                      <span key={tech}>{tech.replace('TypeScript', 'Tailwind')}</span>
+                      <span key={tech}>{tech}</span>
                     ))}
                   </div>
                   {project.liveUrl && (
@@ -312,89 +238,10 @@ export const Home = () => {
         </div>
       </section>
 
-      <section id="reviews" className="site-container reviews-section scroll-mt-24">
-        <div className="section-head">
-          <div>
-            <span className="section-kicker">Client Reviews</span>
-            <h2>Proof that the process feels clear and reliable</h2>
-          </div>
-        </div>
-
-        <div className="reviews-wrap">
-          <button type="button" className="review-nav" aria-label="Previous testimonial" onClick={prevReview}>
-            <ArrowRight size={17} className="rotate-180" />
-          </button>
-          <article className="review-card review-card-single" key={activeTestimonial.id}>
-            <div className="review-top">
-              <span className="review-avatar">{activeTestimonial.name[0]}</span>
-              <div className="stars">
-                {Array.from({ length: activeTestimonial.rating }).map((_, index) => (
-                  <Star key={index} size={15} fill="currentColor" />
-                ))}
-              </div>
-            </div>
-            <p>"{activeTestimonial.content}"</p>
-            <h3>{activeTestimonial.name}</h3>
-            <span>{activeTestimonial.company}</span>
-          </article>
-          <button type="button" className="review-nav" aria-label="Next testimonial" onClick={nextReview}>
-            <ArrowRight size={17} />
-          </button>
-        </div>
-        <div className="review-dots" aria-hidden="true">
-          {testimonials.map((testimonial, index) => (
-            <button
-              key={testimonial.id}
-              type="button"
-              className={index === currentReview ? 'is-active' : ''}
-              onClick={() => setCurrentReview(index)}
-              aria-label={`Show review from ${testimonial.name}`}
-            />
-          ))}
-        </div>
-      </section>
-
-      <section id="pricing" className="site-container pricing-section scroll-mt-24">
-        <div className="section-head">
-          <div>
-            <span className="section-kicker">Pricing</span>
-            <h2>Packages based on where your business is now</h2>
-          </div>
-          <button type="button" onClick={() => handleBookClick('pricing_section')}>
-            Get My Quote
-            <ArrowRight size={15} />
-          </button>
-        </div>
-
-        <div className="pricing-grid">
-          {pricingPackages.map((pack) => (
-            <article className={`pricing-card ${pack.featured ? 'is-featured' : ''}`} key={pack.name}>
-              <div>
-                <span>{pack.name}</span>
-                <strong>{pack.price}</strong>
-                <p>{pack.description}</p>
-              </div>
-              <ul>
-                {pack.features.map((feature) => (
-                  <li key={feature}>
-                    <CheckCircle2 size={16} />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <button type="button" className={pack.featured ? 'btn btn-dark' : 'btn btn-light'} onClick={() => handleBookClick(`pricing_${pack.name}`)}>
-                <Calendar size={15} />
-                <span>Discuss Package</span>
-              </button>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section id="process" className="site-container process-cta-grid scroll-mt-24">
         <div className="process-panel">
             <span className="section-kicker">My Process</span>
-          <h2>A simple process from offer to launch</h2>
+          <h2>A clear process from idea to launch</h2>
           <div className="process-track">
             {processSteps.map((step, index) => {
               const Icon = processIcons[index] ?? BadgeCheck;
@@ -415,14 +262,14 @@ export const Home = () => {
         <div className="cta-panel">
           <div>
             <span>Let's Work Together</span>
-            <h2>Want a website that helps customers choose you?</h2>
+            <h2>Have a project in mind?</h2>
             <p>
-              Book a free 30-min call and we’ll map your offer, target customer,
-              key pages and the fastest path to launch.
+              Tell me about your idea. I’ll help you clarify the right solution,
+              a realistic timeline and the next useful step.
             </p>
             <button type="button" className="btn btn-white" onClick={() => handleBookClick('bottom_cta')}>
               <Calendar size={16} />
-              <span>Book a Strategy Call</span>
+              <span>Book a Free Call</span>
             </button>
           </div>
           <div className="calendar-art" aria-hidden="true">
@@ -440,7 +287,7 @@ export const Home = () => {
       <section id="faq" className="site-container faq-contact-grid scroll-mt-24">
         <div className="faq-panel">
           <span className="section-kicker">FAQ</span>
-          <h2>Questions before starting a lead-focused website</h2>
+          <h2>Questions before starting?</h2>
           <div className="faq-list">
             {faqs.slice(0, 4).map((faq) => (
               <article key={faq.id}>
@@ -453,10 +300,10 @@ export const Home = () => {
 
         <div id="contact" className="contact-panel scroll-mt-24">
           <span className="section-kicker">Contact</span>
-          <h2>Ready to turn your website into a sales asset?</h2>
+          <h2>Tell me what you’re building.</h2>
           <p>
-            Send your offer, current website problem and goals. I’ll review it and
-            suggest the clearest next step for more trust and better enquiries.
+            Share your idea, current website or product challenge. I’ll review it
+            personally and reply with a practical next step.
           </p>
           <div className="contact-actions">
             <Link to="/contact" className="btn btn-dark">

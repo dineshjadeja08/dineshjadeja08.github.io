@@ -4,6 +4,7 @@ import SEO from '../components/common/SEO';
 import Image from '../components/common/Image';
 import BookCallButton from '../components/booking/BookCallButton';
 import { Briefcase, GraduationCap, CheckCircle2 } from 'lucide-react';
+import portrait from '../assets/images/dinesh-portrait.jpg';
 
 
 export const About = () => {
@@ -61,7 +62,7 @@ export const About = () => {
               I started with Python, Django and REST APIs, then expanded into React, TypeScript, Supabase and product development. Since then, I have worked on business websites, SaaS ideas, e-commerce systems, CRM applications and automation-focused projects.
             </p>
             <p>
-              I now use this experience to help businesses and founders build clean, useful and scalable digital products. My focus is on clear user experiences, responsive design, performance and maintainable development.
+              I now use this experience to help businesses and founders build clean, useful digital products. My focus is on clear user experiences, responsive design, performance and maintainable development.
             </p>
           </div>
 
@@ -78,7 +79,7 @@ export const About = () => {
           <div className="relative group max-w-sm mx-auto">
             <div className="absolute -inset-2 bg-brand-soft-peach rounded-brand-lg -rotate-3 transition-transform duration-300 group-hover:rotate-0" />
             <Image
-              src="/src/assets/images/dinesh-portrait.jpg"
+              src={portrait}
               alt="Dinesh Kumar - Freelance Web Developer"
               fallbackType="portrait"
               className="relative w-full aspect-[4/5] object-cover rounded-brand-lg border border-brand-border bg-white shadow-sm"
@@ -110,7 +111,7 @@ export const About = () => {
             },
             {
               title: "Mobile-first baseline",
-              desc: "More than half of your clients visit from phone displays; I design with responsiveness at the core."
+              desc: "Many visitors will arrive on a phone, so I design with responsiveness at the core."
             },
             {
               title: "Honest status updates",
@@ -218,7 +219,7 @@ export const About = () => {
           Have a project where you need help?
         </h2>
         <p className="text-brand-dark-muted max-w-lg mx-auto text-sm md:text-base leading-relaxed">
-          Book a free 30-minute discovery call where we can map out a timeline, scope requirements, and align on budget options.
+          Book a free 30-minute discovery call. I’ll listen to the idea, clarify the scope and suggest a realistic next step.
         </p>
         <div className="pt-4">
           <BookCallButton

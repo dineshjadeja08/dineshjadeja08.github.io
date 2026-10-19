@@ -40,7 +40,7 @@ export const Projects = () => {
     <div className="py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto">
       <SEO 
         title="Portfolio &amp; Case Studies"
-        description="Explore conversion-focused websites, SaaS MVPs, e-commerce stores and backend systems created to solve business problems."
+        description="Explore websites, SaaS products, e-commerce stores and backend systems designed and developed by Dinesh Kumar."
         canonicalPath="/projects"
         schema={pageSchema}
       />
@@ -51,10 +51,10 @@ export const Projects = () => {
           SELECTED WORK
         </span>
         <h1 className="font-heading font-extrabold text-4xl md:text-5xl text-brand-text mb-6">
-          Projects built to earn trust, explain offers and generate action
+          Selected work across websites and digital products
         </h1>
         <p className="text-brand-muted text-base md:text-lg leading-relaxed">
-          Each project is shaped around a business goal: more enquiries, clearer product flows, easier management or a stronger digital presence.
+          A selection of websites, applications and backend systems I have designed or developed, with the thinking and technology behind each one.
         </p>
       </div>
 
@@ -118,13 +118,8 @@ export const Projects = () => {
                 </h2>
                 
                 <p className="text-brand-muted text-sm leading-relaxed mb-6 line-clamp-3">
-                  {project.conversionGoal || project.description}
+                  {project.description}
                 </p>
-                {project.resultMetric && (
-                  <div className="mb-6 text-xs font-extrabold text-brand-text bg-brand-soft-peach/70 border border-brand-border px-3 py-2 rounded-brand-sm">
-                    Result: {project.resultMetric}
-                  </div>
-                )}
 
                 {/* Tech tags */}
                 <div className="flex flex-wrap gap-2 mb-8">

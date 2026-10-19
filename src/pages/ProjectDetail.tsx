@@ -97,7 +97,7 @@ export const ProjectDetail = () => {
         </h1>
 
         <p className="text-brand-muted text-base md:text-lg leading-relaxed max-w-3xl">
-          {project.conversionGoal || project.description}
+          {project.description}
         </p>
       </div>
 
@@ -115,18 +115,18 @@ export const ProjectDetail = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-brand-card border border-brand-border rounded-brand-md p-5">
           <h4 className="text-xs font-bold uppercase tracking-widest text-brand-text mb-2">
-            Business Objective
+            The Brief
           </h4>
           <p className="text-sm text-brand-muted leading-relaxed">
-            {project.conversionGoal || project.problem}
+            {project.problem}
           </p>
         </div>
         <div className="bg-brand-card border border-brand-border rounded-brand-md p-5">
           <h4 className="text-xs font-bold uppercase tracking-widest text-brand-text mb-2">
-            Conversion Outcome
+            What I Built
           </h4>
           <p className="text-sm text-brand-muted leading-relaxed">
-            {project.resultMetric || project.outcome || project.solution}
+            {project.solution}
           </p>
         </div>
       </div>
@@ -257,10 +257,10 @@ export const ProjectDetail = () => {
         {/* Sidebar Call to Action details */}
         <div className="md:col-span-4 bg-brand-card border border-brand-border rounded-brand-md p-6 h-fit space-y-6">
           <h3 className="font-heading font-bold text-lg text-brand-text">
-            Want a result like this?
+            Building something similar?
           </h3>
           <p className="text-brand-muted text-xs leading-relaxed">
-            Let’s review your offer, target customers and the enquiry path your website should create.
+            Tell me what you are working on and I’ll help you identify a practical way to build it.
           </p>
           <div>
             <BookCallButton

@@ -23,8 +23,6 @@ export interface Project {
   outcome?: string;
   liveUrl?: string;
   image: string;
-  conversionGoal?: string;
-  resultMetric?: string;
 }
 
 export const projects: Project[] = [
@@ -46,11 +44,9 @@ export const projects: Project[] = [
     ],
     technologies: ["React", "TypeScript", "Tailwind CSS", "Netlify"],
     challenges: "The primary challenge was designing a clean editorial look that represents a farm operation in a professional, modern way, while making sure the contact forms are easily accessible on low-end mobile devices.",
-    outcome: "The farm successfully launched its online catalog, allowing regional buyers to easily contact the owners via automated forms and WhatsApp.",
+    outcome: "The finished site gives regional buyers a clear way to browse the farm catalogue and contact the owners through forms or WhatsApp.",
     liveUrl: "https://grfgrowths.netlify.app/",
-    image: grfGrowthsImage,
-    conversionGoal: "Turn farm visitors into WhatsApp and enquiry leads.",
-    resultMetric: "Clear enquiry path for regional buyers"
+    image: grfGrowthsImage
   },
   {
     slug: "linksync",
@@ -82,9 +78,7 @@ export const projects: Project[] = [
     challenges: "Implementing a clean drag-and-drop interface that updates database sequence order efficiently, combined with securing public user profiles using Supabase Row Level Security (RLS).",
     outcome: "Created a working MVP where users can sign up, claim a custom slug, add styling, and view basic click count statistics immediately.",
     liveUrl: "https://linksynk.vercel.app/",
-    image: linksyncImage,
-    conversionGoal: "Help creators collect leads and track link engagement.",
-    resultMetric: "MVP with signup, leads and analytics"
+    image: linksyncImage
   },
   {
     slug: "cavve",
@@ -122,19 +116,17 @@ export const projects: Project[] = [
     technologies: ["React", "TypeScript", "Supabase", "PostgreSQL", "Tailwind CSS", "Vercel"],
     challenges: "Handling inventory constraints across nested variations (sizes/colors) while ensuring smooth, instant state updates in the cart without database bottlenecks.",
     outcome: "Built a fully functional store prototype with a complete dashboard for managing order fulfillment, customer profiles, shipping, and discount rules.",
-    image: cavveImage,
-    conversionGoal: "Make premium products easier to browse, save and buy.",
-    resultMetric: "Storefront plus full admin workflow"
+    image: cavveImage
   },
   {
     slug: "xenfirm",
     name: "XenFirm",
     category: "Business and Services Website",
     status: "Live",
-    featured: true,
-    description: "A modern website for my software and digital-services brand, created to present services, products, project work and business information.",
-    problem: "A clean, modern online portal was needed to present freelance software services, project case studies, and digital building processes under a unified tech-forward service brand.",
-    solution: "I implemented a highly polished, responsive marketing site that highlights service offerings, technology stacks, and contact options with a clean modern aesthetic.",
+    featured: false,
+    description: "A modern service website exploring how technical offerings, project work and contact information can be presented clearly.",
+    problem: "The project needed a clean way to organise multiple technical services and case studies without overwhelming visitors.",
+    solution: "I designed and developed a responsive website with focused service pages, selected work and straightforward contact options.",
     role: [
       "UI design & typography selection",
       "Frontend components build",
@@ -143,18 +135,16 @@ export const projects: Project[] = [
     ],
     technologies: ["React", "Tailwind CSS", "Netlify"],
     challenges: "Creating interactive components and transition states that feel responsive and high-fidelity without adding heavy third-party UI libraries.",
-    outcome: "Successfully launched the brand presence, serving as a hub for client outreach and project inquiries.",
+    outcome: "The finished website brings services, project examples and contact details into one consistent experience.",
     liveUrl: "https://xenfirm.com/",
-    image: xenfirmImage,
-    conversionGoal: "Position services clearly and drive project enquiries.",
-    resultMetric: "Launched service-brand hub"
+    image: xenfirmImage
   },
   {
     slug: "clientease-crm",
     name: "ClientEase CRM",
     category: "CRM Web Application",
     status: "Completed Project",
-    featured: false,
+    featured: true,
     description: "A Django-based customer relationship management application for managing contacts, deals and sales pipeline stages.",
     problem: "Small teams need a direct way to log contacts, associate them with deals, track their current sales funnel stage, and view simple metrics without paying for bloated corporate software.",
     solution: "I built a Python and Django web app that manages relations between users, businesses, and deals, presenting pipeline data in a Kanban-style layout.",
@@ -167,9 +157,7 @@ export const projects: Project[] = [
     technologies: ["Python", "Django", "Django REST Framework", "PostgreSQL"],
     challenges: "Designing clean PostgreSQL relational integrity tables that handle history tracking when a deal is moved from one stage of the pipeline to another.",
     outcome: "Delivered a lightweight, secure CRM solution with simple user management, email logging placeholders, and dashboard reports.",
-    image: clienteaseImage,
-    conversionGoal: "Help teams manage leads instead of losing them in spreadsheets.",
-    resultMetric: "Pipeline-ready CRM structure"
+    image: clienteaseImage
   },
   {
     slug: "employee-management-api",
@@ -189,9 +177,7 @@ export const projects: Project[] = [
     technologies: ["Python", "Django", "Django REST Framework", "JWT", "PostgreSQL"],
     challenges: "Configuring custom filters that handle searches across multiple related tables (e.g., department, sub-roles, hierarchy) without introducing database query performance lags.",
     outcome: "Built a solid backend API ready to be consumed by external dashboards, verified through clean automated tests.",
-    image: employeeApiImage,
-    conversionGoal: "Give teams a reliable backend for employee operations.",
-    resultMetric: "Secure API foundation"
+    image: employeeApiImage
   },
   {
     slug: "spamguard-api",
@@ -208,11 +194,9 @@ export const projects: Project[] = [
       "JWT user authentication setup"
     ],
     technologies: ["Python", "Django", "Django REST Framework", "JWT"],
-    challenges: "Ensuring that spam query endpoints return results extremely quickly while storing high-volume log requests safely in the database.",
-    outcome: "Created a secure API prototype that successfully sanitizes incoming requests and provides clean, structured JSON analysis outputs.",
-    image: spamguardImage,
-    conversionGoal: "Protect user trust with safer spam and threat checks.",
-    resultMetric: "Fast validation API prototype"
+    challenges: "Designing spam query endpoints that remain responsive while storing request logs safely in the database.",
+    outcome: "Created an API prototype that validates incoming requests and provides structured JSON analysis outputs.",
+    image: spamguardImage
   },
   {
     slug: "qrnow",
@@ -231,8 +215,6 @@ export const projects: Project[] = [
     technologies: ["React", "Supabase", "Tailwind CSS"],
     challenges: "Managing state configurations for QR design elements (colors, logos, rounded corners) and generating the clean SVG elements on-the-fly.",
     outcome: "Created a responsive micro-SaaS dashboard mockup showing intuitive creation and organization flows.",
-    image: qrnowImage,
-    conversionGoal: "Help businesses create trackable QR campaigns quickly.",
-    resultMetric: "Dashboard concept for QR management"
+    image: qrnowImage
   }
 ];

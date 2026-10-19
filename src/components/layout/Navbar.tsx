@@ -9,8 +9,6 @@ const navItems = [
   { label: 'Services', hash: '#services' },
   { label: 'Work', hash: '#work' },
   { label: 'Process', hash: '#process' },
-  { label: 'Pricing', hash: '#pricing' },
-  { label: 'Reviews', hash: '#reviews' },
   { label: 'FAQ', hash: '#faq' },
   { label: 'Contact', hash: '#contact' }
 ];
