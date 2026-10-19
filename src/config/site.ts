@@ -5,7 +5,7 @@ export const siteConfig = {
   secondaryTitle: "Web Developer & Digital Product Builder",
   location: "Tirupattur, Tamil Nadu, India",
   description: "Independent web developer from Tamil Nadu designing thoughtful websites, web applications and practical digital products.",
-  url: import.meta.env.VITE_SITE_URL || "http://localhost:5173",
+  url: import.meta.env.VITE_SITE_URL || "https://dineshjadeja08.github.io",
   email: import.meta.env.VITE_EMAIL || "dineshkumarc2302@gmail.com",
   whatsappNumber: import.meta.env.VITE_WHATSAPP_NUMBER || "+919629025814",
   socials: {

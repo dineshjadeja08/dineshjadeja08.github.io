@@ -28,9 +28,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Preserve custom domain
-        run: cp CNAME dist/CNAME
-
       - name: Support client-side routing
         run: cp dist/index.html dist/404.html
 
