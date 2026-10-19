@@ -122,7 +122,7 @@ export const Navbar = () => {
               DINESH KUMAR
             </span>
             <span className="text-[9px] font-semibold tracking-normal text-brand-muted leading-none">
-              Freelance Web Developer
+              Freelance Software Engineer
             </span>
           </div>
         </Link>

@@ -8,7 +8,7 @@ import ContactForm from '../components/forms/ContactForm';
 import BookingOptionCard from '../components/booking/BookingOptionCard';
 
 export const Contact = () => {
-  const whatsappUrl = getWhatsAppLink("Hi Dinesh, I would like to enquire about your web development services.");
+  const whatsappUrl = getWhatsAppLink("Hi Dinesh, I would like to enquire about your software engineering services.");
   const email = siteConfig.email;
 
   const pageSchema = [
@@ -16,7 +16,7 @@ export const Contact = () => {
       "@context": "https://schema.org",
       "@type": "ContactPage",
       "name": "Contact Dinesh Kumar",
-      "description": "Get in touch with Dinesh Kumar, freelance web developer based in Tamil Nadu, India.",
+      "description": "Get in touch with Dinesh Kumar, freelance software engineer based in Tamil Nadu, India.",
       "url": `${siteConfig.url}/contact`
     }
   ];

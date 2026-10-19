@@ -1,10 +1,10 @@
 export const siteConfig = {
   name: "Dinesh Kumar",
   fullName: "Dineshkumar Chandrasekaran",
-  title: "Freelance Web Developer",
-  secondaryTitle: "Web Developer & Digital Product Builder",
+  title: "Freelance Software Engineer",
+  secondaryTitle: "Software Engineer & Digital Product Builder",
   location: "Tirupattur, Tamil Nadu, India",
-  description: "Independent web developer from Tamil Nadu designing thoughtful websites, web applications and practical digital products.",
+  description: "Independent software engineer from Tamil Nadu designing thoughtful websites, web applications and practical digital products.",
   url: import.meta.env.VITE_SITE_URL || "https://dineshjadeja08.github.io",
   email: import.meta.env.VITE_EMAIL || "dineshkumarc2302@gmail.com",
   whatsappNumber: import.meta.env.VITE_WHATSAPP_NUMBER || "+919629025814",

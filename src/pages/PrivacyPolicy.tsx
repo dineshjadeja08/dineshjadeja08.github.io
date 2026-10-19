@@ -7,7 +7,7 @@ export const PrivacyPolicy = () => {
     <div className="legal-page px-6 md:px-12 py-16 md:py-24 max-w-4xl mx-auto">
       <SEO
         title="Privacy Policy"
-        description="Privacy Policy for Dinesh Kumar's freelance web development portfolio and project enquiry form."
+        description="Privacy Policy for Dinesh Kumar's freelance software engineering portfolio and project enquiry form."
         canonicalPath="/privacy-policy"
       />
 
@@ -28,7 +28,7 @@ export const PrivacyPolicy = () => {
         <h2>2. How I Use Your Information</h2>
         <p>
           I use your information to reply to enquiries, understand your project requirements,
-          schedule calls, prepare quotes and provide freelance web development services.
+          schedule calls, prepare quotes and provide freelance software engineering services.
           I do not sell your personal information.
         </p>
       </section>

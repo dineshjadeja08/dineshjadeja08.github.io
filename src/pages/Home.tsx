@@ -76,8 +76,8 @@ export const Home = () => {
   return (
     <div className="home-shell">
       <SEO
-        title="Dinesh Kumar | Freelance Web Developer"
-        description="Independent web developer from Tamil Nadu designing thoughtful websites, web applications and practical digital products."
+        title="Dinesh Kumar | Freelance Software Engineer"
+        description="Independent software engineer from Tamil Nadu designing thoughtful websites, web applications and practical digital products."
         canonicalPath="/"
         schema={homepageSchema}
       />
@@ -96,7 +96,7 @@ export const Home = () => {
           </h1>
 
           <p>
-            I’m Dinesh, an independent web developer from Tamil Nadu. I turn ideas
+            I’m Dinesh, an independent software engineer from Tamil Nadu. I turn ideas
             into clear, responsive websites and practical web applications using
             React, TypeScript and Python.
           </p>
@@ -122,7 +122,7 @@ export const Home = () => {
           </div>
           <div className="profile-caption">
             <strong>Dinesh Kumar</strong>
-            <span>Web Developer &amp; Digital Product Builder</span>
+            <span>Software Engineer &amp; Digital Product Builder</span>
           </div>
         </div>
 

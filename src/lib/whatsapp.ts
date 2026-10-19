@@ -17,6 +17,6 @@ export const getWhatsAppLink = (message?: string): string | null => {
     return null;
   }
 
-  const text = message || "Hi Dinesh, I found your portfolio and would like to discuss a website or web-development project.";
+  const text = message || "Hi Dinesh, I found your portfolio and would like to discuss a software project.";
   return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`;
 };

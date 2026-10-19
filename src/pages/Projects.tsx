@@ -30,7 +30,7 @@ export const Projects = () => {
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Dinesh Kumar's Web Development Projects",
+      "name": "Dinesh Kumar's Software Engineering Projects",
       "description": "Portfolio of web sites, custom software dashboards, e-commerce storefronts, and backend REST APIs built by Dinesh Kumar.",
       "url": `${siteConfig.url}/projects`
     }

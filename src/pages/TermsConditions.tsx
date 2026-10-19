@@ -7,7 +7,7 @@ export const TermsConditions = () => {
     <div className="legal-page px-6 md:px-12 py-16 md:py-24 max-w-4xl mx-auto">
       <SEO
         title="Terms & Conditions"
-        description="Terms and Conditions for using Dinesh Kumar's freelance web development portfolio website."
+        description="Terms and Conditions for using Dinesh Kumar's freelance software engineering portfolio website."
         canonicalPath="/terms-and-conditions"
       />
 
@@ -18,7 +18,7 @@ export const TermsConditions = () => {
       <section>
         <h2>1. Website Use</h2>
         <p>
-          This website is provided to showcase my freelance web development services, portfolio
+          This website is provided to showcase my freelance software engineering services, portfolio
           projects and contact options. By using this website, you agree to use it lawfully and
           respectfully.
         </p>

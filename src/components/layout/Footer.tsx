@@ -49,13 +49,13 @@ export const Footer = () => {
                     DINESH KUMAR
                   </span>
                   <span className="text-[9px] uppercase font-bold tracking-widest text-[#8a8782] leading-none">
-                    Freelance Web Developer
+                    Freelance Software Engineer
                   </span>
                 </div>
               </div>
             </Link>
             <p className="text-xs text-[#8a8782] leading-relaxed">
-              Independent web developer building thoughtful websites and practical digital products from Tirupattur.
+              Independent software engineer building thoughtful websites and practical digital products from Tirupattur.
             </p>
             
             {/* Social Icons row */}

@@ -13,7 +13,7 @@ export const About = () => {
       "@context": "https://schema.org",
       "@type": "AboutPage",
       "name": "About Dinesh Kumar",
-      "description": "Learn about Dinesh Kumar's background as a freelance web developer based in Tirupattur, Tamil Nadu.",
+      "description": "Learn about Dinesh Kumar's background as a freelance software engineer based in Tirupattur, Tamil Nadu.",
       "url": `${siteConfig.url}/about`
     },
     {
@@ -37,8 +37,8 @@ export const About = () => {
   return (
     <div className="py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto space-y-20">
       <SEO
-        title="About Me | Freelance Web Developer"
-        description="Learn about Dinesh Kumar, a web developer from Tamil Nadu building fast websites, e-commerce stores, and backend solutions using React and Python."
+        title="About Me | Freelance Software Engineer"
+        description="Learn about Dinesh Kumar, a software engineer from Tamil Nadu building websites, web applications and backend systems using React and Python."
         canonicalPath="/about"
         schema={pageSchema}
       />
@@ -56,7 +56,7 @@ export const About = () => {
           
           <div className="text-brand-muted text-base leading-relaxed space-y-4 font-normal">
             <p>
-              I am a Python and web developer with hands-on experience in backend development, APIs, databases and modern frontend applications.
+              I am a software engineer with hands-on experience in Python, backend development, APIs, databases and modern frontend applications.
             </p>
             <p>
               I started with Python, Django and REST APIs, then expanded into React, TypeScript, Supabase and product development. Since then, I have worked on business websites, SaaS ideas, e-commerce systems, CRM applications and automation-focused projects.
@@ -80,7 +80,7 @@ export const About = () => {
             <div className="absolute -inset-2 bg-brand-soft-peach rounded-brand-lg -rotate-3 transition-transform duration-300 group-hover:rotate-0" />
             <Image
               src={portrait}
-              alt="Dinesh Kumar - Freelance Web Developer"
+              alt="Dinesh Kumar - Freelance Software Engineer"
               fallbackType="portrait"
               className="relative w-full aspect-[4/5] object-cover rounded-brand-lg border border-brand-border bg-white shadow-sm"
             />
