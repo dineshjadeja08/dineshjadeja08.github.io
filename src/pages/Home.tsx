@@ -86,12 +86,12 @@ export const Home = () => {
         <div className="hero-copy">
           <div className="intro-pill">
             <span className="availability-dot" aria-hidden="true" />
-            <span>Available for select freelance projects</span>
+            <span>Available for freelance projects</span>
           </div>
 
           <h1>
-            I design and build
-            <span>thoughtful digital products</span>
+            I design and build{' '}
+            <span>thoughtful digital products</span>{' '}
             for ambitious ideas.
           </h1>
 

@@ -167,7 +167,7 @@ export const Navbar = () => {
       </div>
 
       <div
-        className={`fixed inset-0 top-[60px] bg-brand-bg border-t border-brand-border z-30 transition-transform duration-300 xl:hidden flex flex-col justify-between p-6 ${
+        className={`fixed inset-0 top-[80px] bg-brand-bg border-t border-brand-border z-30 transition-transform duration-300 xl:hidden flex flex-col justify-between p-6 ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >

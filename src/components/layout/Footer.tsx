@@ -31,7 +31,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-brand-dark text-[#8a8782] border-t border-[#2a2a2a] pt-16 pb-8">
+    <footer className="site-footer bg-brand-dark text-[#8a8782] border-t border-[#2a2a2a] pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16 text-left">
           
@@ -78,7 +78,7 @@ export const Footer = () => {
           </div>
 
           {/* Col 2: Quick Links */}
-          <div>
+          <div className="hidden md:block">
             <h4 className="font-heading font-bold text-xs text-white uppercase tracking-widest mb-6">
               Quick Links
             </h4>
@@ -126,7 +126,7 @@ export const Footer = () => {
           </div>
 
           {/* Col 3: Services */}
-          <div>
+          <div className="hidden md:block">
             <h4 className="font-heading font-bold text-xs text-white uppercase tracking-widest mb-6">
               Services
             </h4>

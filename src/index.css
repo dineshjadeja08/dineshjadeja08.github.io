@@ -1365,10 +1365,20 @@
     box-shadow: 0 16px 34px rgba(23, 113, 75, 0.32);
     font-size: 13px;
     font-weight: 900;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+    transition: opacity 180ms ease, transform 180ms ease;
   }
 
   .mobile-whatsapp-fab span {
     display: none;
+  }
+
+  .mobile-whatsapp-fab.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
   }
 }
 
@@ -1461,12 +1471,28 @@
 
 @media (max-width: 640px) {
   .hero-section {
-    padding-top: 12px;
-    gap: 30px;
+    padding-top: 8px;
+    gap: 24px;
   }
 
   .hero-copy h1 {
-    font-size: 39px;
+    font-size: 37px;
+    line-height: 1.08;
+  }
+
+  .hero-copy h1 span {
+    display: inline;
+  }
+
+  .hero-copy p {
+    margin-top: 18px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .intro-pill {
+    margin-bottom: 16px;
+    font-size: 12px;
   }
 
   .hero-actions,
@@ -1482,13 +1508,13 @@
   }
 
   .hero-visual {
-    min-height: 430px;
+    min-height: 400px;
   }
 
   .hero-portrait {
     right: 20px;
     width: min(330px, calc(100% - 40px));
-    height: 382px;
+    height: 354px;
   }
 
   .profile-location {
@@ -1528,16 +1554,15 @@
   }
 
   .trust-strip,
-  .service-grid,
   .project-grid,
   .review-grid,
   .pricing-grid,
-  .process-track,
   .faq-list {
     grid-template-columns: 1fr;
   }
 
   .trust-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: 4px;
     gap: 0;
     border-top: 1px solid var(--color-brand-border);
@@ -1545,12 +1570,53 @@
   }
 
   .trust-strip div {
-    padding: 13px 0;
+    min-height: 52px;
+    padding: 10px 8px;
     border-bottom: 1px solid var(--color-brand-border);
+    font-size: 11px;
   }
 
-  .trust-strip div:last-child {
+  .trust-strip div:nth-child(odd) {
+    border-right: 1px solid var(--color-brand-border);
+  }
+
+  .trust-strip div:nth-last-child(-n + 2) {
     border-bottom: 0;
+  }
+
+  .about-services-grid {
+    gap: 48px;
+    padding-top: 56px;
+  }
+
+  .about-panel {
+    gap: 0;
+  }
+
+  .about-panel img {
+    display: none;
+  }
+
+  .about-copy p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    min-height: 0;
+    padding: 16px;
+  }
+
+  .service-icon {
+    margin-bottom: 12px;
+  }
+
+  .projects-section {
+    padding-top: 64px;
   }
 
   .project-thumb {
@@ -1605,17 +1671,57 @@
     display: none;
   }
 
+  .process-panel,
+  .faq-panel,
+  .contact-panel,
+  .cta-panel {
+    padding: 22px 18px;
+  }
+
+  .process-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 12px;
+  }
+
+  .process-step span {
+    width: 52px;
+    height: 52px;
+  }
+
   .cta-panel {
     display: block;
   }
 
   .calendar-art {
-    margin: 12px 0 0 auto;
-    transform: scale(0.86);
-    transform-origin: right bottom;
+    display: none;
   }
 
   .mobile-whatsapp-fab {
     display: inline-flex;
+  }
+
+  .site-footer {
+    padding-bottom: 88px;
+  }
+}
+
+@media (min-width: 380px) and (max-width: 640px) {
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-copy h1 {
+    font-size: 34px;
+  }
+
+  .site-container {
+    width: calc(100% - 28px);
+  }
+
+  .profile-caption {
+    width: min(230px, calc(100% - 12px));
+    padding: 13px 15px;
   }
 }

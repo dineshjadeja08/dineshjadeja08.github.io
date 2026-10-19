@@ -55,12 +55,12 @@ export const Contact = () => {
               {/* Email Connection */}
               {email && (
                 <div className="flex items-center space-x-4 p-4 bg-brand-card border border-brand-border rounded-brand-sm">
-                  <div className="p-3 bg-brand-soft-peach rounded-brand-sm text-brand-peach">
+                  <div className="p-3 bg-brand-soft-peach rounded-brand-sm text-brand-peach shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <span className="text-[10px] uppercase font-bold text-brand-muted block">Email Address</span>
-                    <a href={`mailto:${email}`} className="text-sm font-semibold hover:text-brand-peach transition-colors duration-150">
+                    <a href={`mailto:${email}`} className="block break-all text-sm font-semibold hover:text-brand-peach transition-colors duration-150">
                       {email}
                     </a>
                   </div>
@@ -70,10 +70,10 @@ export const Contact = () => {
               {/* WhatsApp Connection */}
               {whatsappUrl && (
                 <div className="flex items-center space-x-4 p-4 bg-brand-card border border-brand-border rounded-brand-sm">
-                  <div className="p-3 bg-brand-soft-peach rounded-brand-sm text-brand-peach">
+                  <div className="p-3 bg-brand-soft-peach rounded-brand-sm text-brand-peach shrink-0">
                     <MessageSquare className="w-5 h-5 text-brand-success" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <span className="text-[10px] uppercase font-bold text-brand-muted block">WhatsApp Chat</span>
                     <a 
                       href={whatsappUrl} 
@@ -90,12 +90,12 @@ export const Contact = () => {
 
               {/* Location Card */}
               <div className="flex items-center space-x-4 p-4 bg-brand-card border border-brand-border rounded-brand-sm">
-                <div className="p-3 bg-brand-soft-peach rounded-brand-sm text-brand-peach">
+                <div className="p-3 bg-brand-soft-peach rounded-brand-sm text-brand-peach shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <span className="text-[10px] uppercase font-bold text-brand-muted block">Location</span>
-                  <span className="text-sm font-semibold text-brand-text">
+                  <span className="block text-sm font-semibold text-brand-text">
                     {siteConfig.location}
                   </span>
                 </div>
